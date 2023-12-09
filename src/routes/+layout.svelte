@@ -29,6 +29,7 @@
       justify-content: space-between;
 
       div{
+            flex-shrink: 0;
             display: flex;
             justify-content: center;
             align-items: center;
@@ -38,8 +39,7 @@
                 align-items: center;
                 justify-content: center;
                 height: 50px;
-                width: 100px;
-                //padding: 0 30px;
+                padding: 0 30px;
                 margin: 0 10px;
                 text-decoration: none;
                 background-color: #362b2b;
@@ -54,8 +54,7 @@
             }
         }
 
-        button {
-          float: right;
+        button, .spacer {
             display: flex;
             align-items: center;
             justify-content: center;
@@ -63,6 +62,7 @@
             font-size: 2rem;
             background: none;
             border: none;
+            width: 50px;
             flex-shrink: 0;
         }
 
@@ -159,7 +159,7 @@
     }
 </script>
 <nav>
-    <div></div>
+    <img src="/favicon.svg" class="spacer" alt="logo">
     <div>
         <a href="/">Home</a>
         <a href="/about">{$_("about")}</a>
