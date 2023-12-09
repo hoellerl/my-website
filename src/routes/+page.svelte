@@ -1,7 +1,6 @@
-<script>
-    let name = 'hoellerl';
+<script lang="ts">
+    import { _ } from "svelte-i18n";
 </script>
 
-<h1>{name}</h1>
-<p>Enter your name: </p>
-<input bind:value={name} placeholder="Enter your name" />
+<h1>{$_("greeting")}<span>Adam</span> <i class="twa twa-waving-hand"><span>waving-hand</span></i></h1>
+<p>{$_("summary")}</p>

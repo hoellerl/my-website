@@ -1,55 +1,149 @@
 <style lang="scss">
+    @import url(https://cdn.jsdelivr.net/gh/SebastianAigner/twemoji-amazing/twemoji-amazing.css); // from https://cdn.jsdelivr.net/gh/SebastianAigner/twemoji-amazing/twemoji-amazing.css
+
     @font-face {
-        font-family: 'ABeeZee';
-        src: url('$lib/fonts/ABeeZee-Regular.ttf') format('truetype');
-        font-style: normal;
+    font-family: 'ABeeZee';
+    src: url('$lib/fonts/ABeeZee-Regular.ttf') format('truetype');
+    font-style: normal;
     }
 
     @font-face {
-        font-family: 'ABeeZee';
-        src: url('$lib/fonts/ABeeZee-Italic.ttf') format('truetype');
-        font-style: italic;
+    font-family: 'ABeeZee';
+    src: url('$lib/fonts/ABeeZee-Italic.ttf') format('truetype');
+    font-style: italic;
     }
 
     :root{
+        display: flex;
+        justify-content: center;
+        align-items: center;
+        text-align: center;
+        padding: 0 260px;
         color: wheat;
         font-family: 'ABeeZee', sans-serif;
-        display: flex;
-        flex-direction: column;
-        align-items: center;
-        background: #222225;
-        --rounding: 10px;
+        background: #211d1d;
+        --rounding: 15px;
     }
+
 
     nav {
-      margin-top: -15px;
-      padding: 20px;
-      width: fit-content;
-      background: darkslategray;
-      border-radius: var(--rounding);
-      display: flex;
-      justify-content: center;
-      align-items: center;
-
-    a, button {
-        padding: 15px 25px;
-        margin: 0 10px;
-        text-decoration: none;
-        color: #000;
+        margin: -7px auto 30px;
+        padding: 20px 50px;
+        width: fit-content;
+        background: #312c2c;
         border-radius: var(--rounding);
-        background-color: #ddd;
-        border: 1px solid #000;
-        transition: background-color 0.3s ease;
+        display: flex;
+        justify-content: center;
+        align-items: center;
 
-        &:hover {
-            background-color: #bbb;
+        a {
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            height: 50px;
+            width: 100px;
+            margin: 0 10px;
+            text-decoration: none;
+            background-color: #362b2b;
+            border-radius: var(--rounding);
+            border: 1px solid #000;
+            transition: 0.3s ease;
+
+            &:hover {
+                background-color: #642330;
+                color:wheat;
+            }
+        }
+
+        button {
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            cursor: pointer;
+            margin-left: 40px;
+            font-size: 2rem;
+            background: none;
+            border: none;
+        }
+
+    }
+
+    footer {
+        font-size: 0.9rem;
+        position: absolute;
+        bottom: 0;
+        right: 0;
+        left: 0;
+        a {
+            display: inline-block;
         }
     }
-}
+
+    :global(a){
+        color: wheat;
+        transition: color 0.3s ease;
+        &:hover {
+            color: #ee2956;
+        }
+    }
+
+    :global(i span){ // alt text for icons/emojis
+        position: absolute;
+        width: 1px;
+        height: 1px;
+        padding: 0;
+        margin: -1px;
+        overflow: hidden;
+        clip: rect(0, 0, 0, 0);
+        border: 0;
+    }
+
+    :global(*::selection){
+        background: #b12c4d;
+        color: wheat;
+    }
+
+    :global(h1 span){
+        color: #ee2956;
+    }
+
+    :global(h1){
+      font-weight: 700;
+    }
 </style>
 
 <script lang="ts">
-    import { locale, _ } from 'svelte-i18n';
+    import { locale, _} from 'svelte-i18n';
+    const footerSep = "&nbsp;&nbsp;•&nbsp;&nbsp;";
+    const timezone = Intl.DateTimeFormat().resolvedOptions().timeZone;
+    let deCountries = ["germany", "austria", "switzerland", "liechtenstein"];
+    let enCountries = ["united-kingdom", "australia", "united-states", "canada"];
+    const userLocationArr: string[] = timezone.split("/");
+    const userLocation: string = userLocationArr[0] === "Europe" ? userLocationArr[1] : userLocationArr[0]; // Europe is not needed
+    let englishLocation: number = 0;
+    let germanLocation : number = 0;
+
+    // localization for english and german speaking countries (changing flag based on location)
+    switch (userLocation) {
+        case 'Australia':
+            englishLocation = 1;
+            break;
+        case 'America':
+            englishLocation = 2;
+            break;
+        case 'Canada':
+            englishLocation = 3;
+            break;
+        case "Vienna":
+            germanLocation = 1;
+            break;
+        case "Zurich":
+            germanLocation = 2;
+            break;
+        case "Vaduz":
+            germanLocation = 3;
+            break;
+    }
 
     function changeLocale(){
         if (($locale as string).startsWith('en')) {
@@ -60,13 +154,19 @@
 
     }
 </script>
-
 <nav>
-    <a href="/">{$_("home")}</a>
+    <a href="/">Home</a>
     <a href="/about">{$_("about")}</a>
     <a href="/contact">{$_("contact")}</a>
     <a href="/projects">{$_("projects")}</a>
     <button type="button" on:click={changeLocale}>
-    {#if $locale?.startsWith('en')}🇩🇪{:else}🇬🇧{/if}</button>
+    {#if $locale?.startsWith('en')}<i class="twa twa-flag-{deCountries[germanLocation]}"><span>Deutsch</span> </i>{:else}<i class="twa twa-flag-{enCountries[englishLocation]}" ><span>English</span></i>{/if}</button>
 </nav>
+<div class="content">
 <slot></slot>
+</div>
+
+
+<footer>
+    <p>© {new Date(2023, 0,1).getFullYear()} Adam Höllerl{@html footerSep}{@html $_("made-with-love")}{@html footerSep}<a href="https://github.com/hoellerl">{$_("source")}</a></p>
+</footer>

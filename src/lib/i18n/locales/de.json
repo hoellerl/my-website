@@ -1,6 +1,11 @@
 {
-  "home": "home",
-  "about": "über mich",
-  "contact": "kontakt",
-  "projects": "projekte"
+  "about": "Über mich",
+  "contact": "Kontakt",
+  "projects": "Projekte",
+  "greeting": "Hi, ich bin ",
+  "source": "Quellcode",
+  "made-with-love": "Gemacht mit <i class=\"twa twa-sparkling-heart\" ><span>Liebe</span></i> mit Svelte",
+  "summary": "Ich bin Softwareentwickler, lebe in Linz, Österreich und gehe momentan auf die HTL Leonding.",
+  "404-sorry": "die Seite, die du suchst, existiert nicht :(",
+  "go-back": "Zurück zur Homepage"
 }

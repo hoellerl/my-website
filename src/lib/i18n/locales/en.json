@@ -1,6 +1,11 @@
 {
-  "home": "home",
-  "about": "about me",
-  "contact": "contact me",
-  "projects": "projects"
+  "about": "About me",
+  "contact": "Contact",
+  "projects": "Projects",
+  "greeting": "Hi, I'm ",
+  "source": "Source code",
+  "made-with-love": "Made with <i class=\"twa twa-sparkling-heart\" ><span>love</span></i> with Svelte",
+  "summary": "I'm a software developer living in Linz, Austria and currently attending HTL Leonding.",
+  "404-sorry": "the page you were trying to view does not exist :(",
+  "go-back": "Go back to the homepage"
 }
