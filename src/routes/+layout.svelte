@@ -14,56 +14,56 @@
     }
 
     :root{
-        display: flex;
-        justify-content: center;
-        align-items: center;
         text-align: center;
-        padding: 0 260px;
         color: wheat;
         font-family: 'ABeeZee', sans-serif;
         background: #211d1d;
         --rounding: 15px;
     }
 
-
     nav {
-        margin: -7px auto 30px;
-        padding: 20px 50px;
-        width: fit-content;
-        background: #312c2c;
-        border-radius: var(--rounding);
         display: flex;
-        justify-content: center;
-        align-items: center;
+        margin: -7px 0 30px;
+        padding: 20px 50px;
+        background: #312c2c;
+      justify-content: space-between;
 
-        a {
+      div{
             display: flex;
-            align-items: center;
             justify-content: center;
-            height: 50px;
-            width: 100px;
-            margin: 0 10px;
-            text-decoration: none;
-            background-color: #362b2b;
-            border-radius: var(--rounding);
-            border: 1px solid #000;
-            transition: 0.3s ease;
+            align-items: center;
 
-            &:hover {
-                background-color: #642330;
-                color:wheat;
+            a {
+                display: flex;
+                align-items: center;
+                justify-content: center;
+                height: 50px;
+                width: 100px;
+                //padding: 0 30px;
+                margin: 0 10px;
+                text-decoration: none;
+                background-color: #362b2b;
+                border-radius: var(--rounding);
+                border: 1px solid #000;
+                transition: 0.3s ease;
+
+                &:hover {
+                    background-color: #642330;
+                    color:wheat;
+                }
             }
         }
 
         button {
+          float: right;
             display: flex;
             align-items: center;
             justify-content: center;
             cursor: pointer;
-            margin-left: 40px;
             font-size: 2rem;
             background: none;
             border: none;
+            flex-shrink: 0;
         }
 
     }
@@ -96,6 +96,10 @@
         overflow: hidden;
         clip: rect(0, 0, 0, 0);
         border: 0;
+    }
+
+    :global(body) {
+      margin: 0; // reset default margin
     }
 
     :global(*::selection){
@@ -155,12 +159,17 @@
     }
 </script>
 <nav>
-    <a href="/">Home</a>
-    <a href="/about">{$_("about")}</a>
-    <a href="/contact">{$_("contact")}</a>
-    <a href="/projects">{$_("projects")}</a>
+    <div></div>
+    <div>
+        <a href="/">Home</a>
+        <a href="/about">{$_("about")}</a>
+        <a href="/contact">{$_("contact")}</a>
+        <a href="/projects">{$_("projects")}</a>
+    </div>
     <button type="button" on:click={changeLocale}>
-    {#if $locale?.startsWith('en')}<i class="twa twa-flag-{deCountries[germanLocation]??'germany'}"><span>Deutsch</span> </i>{:else}<i class="twa twa-flag-{enCountries[englishLocation]??'united-kingdom'}" ><span>English</span></i>{/if}</button>
+        {#if $locale?.startsWith('en')}<i class="twa twa-flag-{deCountries[germanLocation]??'germany'}"><span>Deutsch</span></i>
+        {:else}<i class="twa twa-flag-{enCountries[englishLocation]??'united-kingdom'}" ><span>English</span></i>{/if}
+    </button>
 </nav>
 <div class="content">
 <slot></slot>

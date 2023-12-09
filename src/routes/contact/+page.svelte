@@ -1,10 +1,9 @@
-
 <style lang="scss">
     input, textarea {
         width: 100%;
         padding: 10px;
         border: 1.5px solid #111;
-        border-radius: 10px;
+        border-radius: 15px;
         box-sizing: border-box;
         margin-bottom: 10px;
       margin-top: 10px;
@@ -26,6 +25,10 @@
     import jQuery from 'jquery';
     import { goto } from '$app/navigation';
 </script>
+
+<svelte:head>
+    <title>Kontakt | Adam Höllerl</title>
+</svelte:head>
 
 <h1>You can <span>contact</span> me here</h1>
 <form on:submit={
@@ -52,6 +55,5 @@
     <input type="text" name="subject" placeholder="Subject: An Awesome Reason to Chat!" required><br>
     <label for="message">Your message</label><br>
     <textarea name="message" placeholder="I just wanted to say..." required rows="8" cols="40"></textarea><br>
-    <input type="hidden" name="_captcha" value="false">
     <button type="submit">Send Message</button>
 </form>

@@ -1,6 +1,59 @@
+<style lang="scss">
+    .lang{
+        width: 40px;
+        height: 40px;
+        margin: 7px;
+    }
+
+    .lang-div{
+        padding: 10px;
+        display: flex;
+        flex-wrap: wrap;
+        width: fit-content;
+        justify-content: center;
+        border-radius: 10px;
+        background-color: #312c2c;
+        margin: 0 20px;
+    }
+
+    #tech-stack{
+        display: flex;
+        flex-wrap: wrap;
+        justify-content: center;
+        margin: 0 20px;
+    }
+
+    h2{
+        margin: 40px 0 0 0;
+    }
+</style>
+
+
+<svelte:head>
+    <title>Über mich | Adam Höllerl</title>
+</svelte:head>
+
 <h1>So you want to know more <span>about me</span>?</h1>
 
 <p>I am Adam Höllerl and currently live in Linz, Austria. I am a passionate software developer and currently learn about it at HTL Leonding.</p>
 <h2>My tech stack</h2>
-<p>Webdevelopment: 🤔🤔🤔🤔🤔🤔🤔🤔</p>
-<p></p>
+<div id="tech-stack">
+    <div >
+        <h3>OOP:</h3>
+        <div class="lang-div">
+            <img class="lang" alt="C#" src="https://cdn.jsdelivr.net/gh/devicons/devicon/icons/csharp/csharp-original.svg" />
+            <img class="lang" alt="Java" src="https://cdn.jsdelivr.net/gh/devicons/devicon/icons/java/java-original.svg" />
+            <img class="lang" alt="Typescript" src="https://cdn.jsdelivr.net/gh/devicons/devicon/icons/typescript/typescript-original.svg" />
+            <img class="lang" alt="Javascript" src="https://cdn.jsdelivr.net/gh/devicons/devicon/icons/javascript/javascript-original.svg" />
+        </div>
+    </div>
+    <div>
+        <h3>Webdev:</h3>
+        <div class="lang-div">
+            <img class="lang" alt="HTML5" src="https://cdn.jsdelivr.net/gh/devicons/devicon/icons/html5/html5-original.svg" />
+            <img class="lang" alt="CSS3" src="https://cdn.jsdelivr.net/gh/devicons/devicon/icons/css3/css3-original.svg" />
+            <img class="lang" alt="Sass" src="https://cdn.jsdelivr.net/gh/devicons/devicon/icons/sass/sass-original.svg" />
+            <img class="lang" alt="Svelte" src="https://cdn.jsdelivr.net/gh/devicons/devicon/icons/svelte/svelte-original.svg" />
+        </div>
+    </div>
+</div>
