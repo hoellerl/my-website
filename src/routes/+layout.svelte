@@ -160,7 +160,7 @@
     <a href="/contact">{$_("contact")}</a>
     <a href="/projects">{$_("projects")}</a>
     <button type="button" on:click={changeLocale}>
-    {#if $locale?.startsWith('en')}<i class="twa twa-flag-{deCountries[germanLocation]}"><span>Deutsch</span> </i>{:else}<i class="twa twa-flag-{enCountries[englishLocation]}" ><span>English</span></i>{/if}</button>
+    {#if $locale?.startsWith('en')}<i class="twa twa-flag-{deCountries[germanLocation]??'germany'}"><span>Deutsch</span> </i>{:else}<i class="twa twa-flag-{enCountries[englishLocation]??'united-kingdom'}" ><span>English</span></i>{/if}</button>
 </nav>
 <div class="content">
 <slot></slot>
