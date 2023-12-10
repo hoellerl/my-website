@@ -41,6 +41,7 @@
             align-items: center;
 
             a {
+                font-weight: bold;
                 display: flex;
                 align-items: center;
                 justify-content: center;
@@ -48,9 +49,9 @@
                 padding: 0 30px;
                 margin: 0 10px;
                 text-decoration: none;
-                background-color: #362b2b;
+                background-color: #413434;
+                border: #1f1d1d 1px solid;
                 border-radius: var(--rounding);
-                border: 1px solid #000;
                 transition: 0.3s ease;
 
                 &:hover {

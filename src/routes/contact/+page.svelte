@@ -6,10 +6,11 @@
         border-radius: 15px;
         box-sizing: border-box;
         margin-bottom: 10px;
-      margin-top: 10px;
-      background-color: #313131;
-        color: #fff;
-      font-family: 'ABeeZee', sans-serif;
+        margin-top: 10px;
+        background-color: #312c2c;
+        color: #f5e2c3;
+        font-size: 1rem;
+        font-family: 'ABeeZee', sans-serif;
     }
 
     textarea{
@@ -21,19 +22,21 @@
     }
 
     button{
-        background-color: #111;
-        color: #fff;
-        border: 1.5px solid #111;
+      color: wheat;
+      font-weight: bold;
+      height: 50px;
+      padding: 0 30px;
+      margin: 0 10px;
+      text-decoration: none;
+      background-color: #362b2b;
+      border: 1px solid #000;
+      transition: 0.3s ease;
         border-radius: 15px;
-        padding: 10px;
-        font-family: 'ABeeZee', sans-serif;
-        font-weight: bold;
-        cursor: pointer;
-        transition: all 0.2s ease-in-out;
-        &:hover {
-          background-color: #fff;
-          color: #111;
-        }
+
+      &:hover {
+        background-color: #642330;
+        color:wheat;
+      }
     }
 </style>
 
@@ -66,11 +69,11 @@
         });
     }
 } id="contact">
-    <label for="email">Your email</label><br>
-    <input type="email" name="email" placeholder="your.name@example.com" required><br>
-    <label for="subject">Subject</label><br>
-    <input type="text" name="subject" placeholder="Subject: An Awesome Reason to Chat!" required><br>
-    <label for="message">Your message</label><br>
-    <textarea name="message" placeholder="I just wanted to say..." required rows="8" cols="40"></textarea><br>
+    <label for="email">{$_("contact-email")}</label><br>
+    <input type="email" name="email" placeholder="{$_('contact-email-placeholder')}" required><br>
+    <label for="subject">{$_("contact-subject")}</label><br>
+    <input type="text" name="subject" placeholder="{$_('contact-subject-placeholder')}" required><br>
+    <label for="message">{$_("contact-message")}</label><br>
+    <textarea name="message" placeholder="{$_('contact-message-placeholder')}" required rows="8" cols="40"></textarea><br>
     <button type="submit">{$_("send")}</button>
 </form>

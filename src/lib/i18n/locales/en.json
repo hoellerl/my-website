@@ -2,15 +2,27 @@
   "about": "About me",
   "contact": "Contact",
   "projects": "Projects",
+
   "greeting": "Hi, I'm ",
   "source": "Source code",
   "made-with-love": "Made with <i class=\"twa twa-sparkling-heart\" ><span>love</span></i> with Svelte",
   "summary": "I'm a software and web developer living in Linz, Austria and currently attending HTL Leonding.",
+
   "404-sorry": "the page you were trying to view does not exist :(",
   "go-back": "Go back to the homepage",
-  "about-summary": "I am Adam Höllerl and live in Linz, Austria. I am a passionate software and web developer and currently learn programming at HTL Leonding.",
+
   "about-header": "So you want to know more <span>about me</span>?",
+  "about-summary": "I am Adam Höllerl and live in Linz, Austria. I am a passionate software and web developer and currently learn programming at HTL Leonding.",
+  "about-tech-stack": "My tech stack",
+
   "projects-header": "Here are some of my <span>projects</span>",
+
   "contact-header": "You can <span>contact</span> me here",
+  "contact-email": "Your email",
+  "contact-email-placeholder": "your.name@beispiel.com",
+  "contact-subject": "Subject",
+  "contact-subject-placeholder": "Betreff: An Awesome Reason To Chat!",
+  "contact-message": "Your message",
+  "contact-message-placeholder": "I just wanted to say...",
   "send": "Send"
 }

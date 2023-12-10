@@ -40,7 +40,7 @@
 <h1>{@html $_("about-header")}</h1>
 
 <p>{$_("about-summary")}</p>
-<h2>My tech stack</h2>
+<h2>{$_("about-tech-stack")}</h2>
 <div id="tech-stack">
     <div >
         <h3>OOP:</h3>
