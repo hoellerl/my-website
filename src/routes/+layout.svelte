@@ -39,26 +39,6 @@
             display: flex;
             justify-content: center;
             align-items: center;
-
-            a {
-                font-weight: bold;
-                display: flex;
-                align-items: center;
-                justify-content: center;
-                height: 50px;
-                padding: 0 30px;
-                margin: 0 10px;
-                text-decoration: none;
-                background-color: #413434;
-                border: #1f1d1d 1px solid;
-                border-radius: var(--rounding);
-                transition: 0.3s ease;
-
-                &:hover {
-                    background-color: #642330;
-                    color:wheat;
-                }
-            }
         }
 
         button, .spacer {
@@ -125,6 +105,29 @@
     :global(h1){
       font-weight: 700;
     }
+
+    :global(.button){
+        display: inline-block;
+        padding: 10px 20px;
+        margin: 10px;
+        border-radius: var(--rounding);
+        background-color: #413434;
+        border: #1f1d1d 1.5px solid;
+        color: wheat;
+        text-decoration: none;
+        transition: 0.3s ease;
+      &:hover{
+        transform: scale(1.05);
+        box-shadow:  0 0 5px rgba(0, 0, 0, 0.5);
+        color: wheat;
+      }
+
+      &:active{
+        transform: scale(0.95);
+        box-shadow:  0 0 0 rgba(0, 0, 0, 0.5);
+      }
+
+    }
 </style>
 
 <script lang="ts">
@@ -172,10 +175,10 @@
 <nav>
     <a class="spacer" href="/"><img src="/favicon.svg" alt="logo"></a>
     <div>
-        <a href="/">Home</a>
-        <a href="/about">{$_("about")}</a>
-        <a href="/contact">{$_("contact")}</a>
-        <a href="/projects">{$_("projects")}</a>
+        <a class="button" href="/">Home</a>
+        <a class="button" href="/about">{$_("about")}</a>
+        <a class="button" href="/contact">{$_("contact")}</a>
+        <a class="button" href="/projects">{$_("projects")}</a>
     </div>
     <button type="button" on:click={changeLocale}>
         {#if $locale?.startsWith('en')}<i class="twa twa-flag-{deCountries[germanLocation]??'germany'}"><span>Deutsch</span></i>
@@ -188,5 +191,5 @@
 
 
 <footer>
-    <p>© {new Date(2023, 0,1).getFullYear()} Adam Höllerl{@html footerSep}{@html $_("made-with-love")}{@html footerSep}<a href="https://github.com/hoellerl">{$_("source")}</a></p>
+    <p>© {new Date(2023, 0,1).getFullYear()} Adam Höllerl{@html footerSep}{@html $_("made-with-love")}{@html footerSep}<a href="https://github.com/hoellerl/my-website">{$_("source")}</a></p>
 </footer>

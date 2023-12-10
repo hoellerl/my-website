@@ -22,22 +22,10 @@
     }
 
     button{
-      color: wheat;
-      font-weight: bold;
-      height: 50px;
-      padding: 0 30px;
-      margin: 0 10px;
-      text-decoration: none;
-      background-color: #362b2b;
-      border: 1px solid #000;
-      transition: 0.3s ease;
-        border-radius: 15px;
-
-      &:hover {
-        background-color: #642330;
-        color:wheat;
-      }
+      vertical-align: middle;
+      font-size: 1.1rem;
     }
+
 </style>
 
 <script lang="ts">
@@ -75,5 +63,5 @@
     <input type="text" name="subject" placeholder="{$_('contact-subject-placeholder')}" required><br>
     <label for="message">{$_("contact-message")}</label><br>
     <textarea name="message" placeholder="{$_('contact-message-placeholder')}" required rows="8" cols="40"></textarea><br>
-    <button type="submit">{$_("send")}</button>
+    <button class="button" type="submit"><i class="twa twa-rocket"></i>&nbsp&nbsp{$_("send")}</button>
 </form>

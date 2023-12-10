@@ -51,6 +51,11 @@
             box-shadow:  0 0 10px rgba(0, 0, 0, 0.5);
         }
 
+      &:active{
+        transform: scale(0.95);
+        box-shadow:  0 0 0 rgba(0, 0, 0, 0.5);
+      }
+
         p span{
             margin-left: 5px;
             font-size: 1.1rem;
