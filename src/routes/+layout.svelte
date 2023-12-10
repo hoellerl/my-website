@@ -51,6 +51,7 @@
             border: none;
             width: 50px;
             flex-shrink: 0;
+
         }
 
       .spacer img{
