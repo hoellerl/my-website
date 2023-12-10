@@ -1,3 +1,7 @@
+<script>
+    import {_} from "svelte-i18n";
+</script>
+
 <style lang="scss">
     .lang{
         width: 40px;
@@ -11,7 +15,7 @@
         flex-wrap: wrap;
         width: fit-content;
         justify-content: center;
-        border-radius: 10px;
+        border-radius: 15px;
         background-color: #312c2c;
         margin: 0 20px;
     }
@@ -33,9 +37,9 @@
     <title>Über mich | Adam Höllerl</title>
 </svelte:head>
 
-<h1>So you want to know more <span>about me</span>?</h1>
+<h1>{@html $_("about-header")}</h1>
 
-<p>I am Adam Höllerl and currently live in Linz, Austria. I am a passionate software developer and currently learn about it at HTL Leonding.</p>
+<p>{$_("about-summary")}</p>
 <h2>My tech stack</h2>
 <div id="tech-stack">
     <div >

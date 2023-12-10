@@ -19,18 +19,35 @@
     label{
         font-weight: bold;
     }
+
+    button{
+        background-color: #111;
+        color: #fff;
+        border: 1.5px solid #111;
+        border-radius: 15px;
+        padding: 10px;
+        font-family: 'ABeeZee', sans-serif;
+        font-weight: bold;
+        cursor: pointer;
+        transition: all 0.2s ease-in-out;
+        &:hover {
+          background-color: #fff;
+          color: #111;
+        }
+    }
 </style>
 
 <script lang="ts">
     import jQuery from 'jquery';
     import { goto } from '$app/navigation';
+    import { _ } from "svelte-i18n";
 </script>
 
 <svelte:head>
     <title>Kontakt | Adam Höllerl</title>
 </svelte:head>
 
-<h1>You can <span>contact</span> me here</h1>
+<h1>{@html $_("contact-header")}</h1>
 <form on:submit={
     (e) => {
         e.preventDefault();
@@ -55,5 +72,5 @@
     <input type="text" name="subject" placeholder="Subject: An Awesome Reason to Chat!" required><br>
     <label for="message">Your message</label><br>
     <textarea name="message" placeholder="I just wanted to say..." required rows="8" cols="40"></textarea><br>
-    <button type="submit">Send Message</button>
+    <button type="submit">{$_("send")}</button>
 </form>

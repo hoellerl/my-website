@@ -2,15 +2,15 @@
     @import url(https://cdn.jsdelivr.net/gh/SebastianAigner/twemoji-amazing/twemoji-amazing.css); // from https://cdn.jsdelivr.net/gh/SebastianAigner/twemoji-amazing/twemoji-amazing.css
 
     @font-face {
-    font-family: 'ABeeZee';
-    src: url('$lib/fonts/ABeeZee-Regular.ttf') format('truetype');
-    font-style: normal;
+        font-family: 'ABeeZee';
+        src: url('$lib/fonts/ABeeZee-Regular.ttf') format('truetype');
+        font-style: normal;
     }
 
     @font-face {
-    font-family: 'ABeeZee';
-    src: url('$lib/fonts/ABeeZee-Italic.ttf') format('truetype');
-    font-style: italic;
+        font-family: 'ABeeZee';
+        src: url('$lib/fonts/ABeeZee-Italic.ttf') format('truetype');
+        font-style: italic;
     }
 
     :root{
@@ -21,12 +21,18 @@
         --rounding: 15px;
     }
 
+    #content{
+      padding: 0 260px;
+    }
+
+
     nav {
         display: flex;
         margin: -7px 0 30px;
         padding: 20px 50px;
         background: #312c2c;
-      justify-content: space-between;
+        justify-content: space-between;
+        font-size: 1.2rem;
 
       div{
             flex-shrink: 0;
@@ -65,6 +71,10 @@
             width: 50px;
             flex-shrink: 0;
         }
+
+      .spacer img{
+        width: 50px;
+      }
 
     }
 
@@ -159,7 +169,7 @@
     }
 </script>
 <nav>
-    <img src="/favicon.svg" class="spacer" alt="logo">
+    <a class="spacer" href="/"><img src="/favicon.svg" alt="logo"></a>
     <div>
         <a href="/">Home</a>
         <a href="/about">{$_("about")}</a>
@@ -171,7 +181,7 @@
         {:else}<i class="twa twa-flag-{enCountries[englishLocation]??'united-kingdom'}" ><span>English</span></i>{/if}
     </button>
 </nav>
-<div class="content">
+<div id="content">
 <slot></slot>
 </div>
 
