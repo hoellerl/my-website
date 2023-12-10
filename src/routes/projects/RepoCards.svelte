@@ -44,6 +44,7 @@
         h2 {
             font-size: 1.4rem;
             margin-bottom: 5px;
+          color: wheat;
         }
 
         &:hover{
