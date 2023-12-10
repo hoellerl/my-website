@@ -17,6 +17,8 @@
 
   "projects-header": "Hier sind einige meiner <span>Projekte</span>",
 
+  "contact-thanks": "<span>Danke</span> für deine Nachricht!",
+    "contact-thanks-text": "Ich werde dir so schnell wie möglich antworten.",
   "contact-header": "Hier kannst du mich <span>kontaktieren</span>",
   "contact-email": "Deine E-Mail",
   "contact-email-placeholder": "dein.name@beispiel.com",

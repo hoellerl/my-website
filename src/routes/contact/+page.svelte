@@ -76,5 +76,6 @@
     <textarea name="message" placeholder="{$_('contact-message-placeholder')}" required rows="8" cols="40"></textarea><br>
     <input type="checkbox" name="botcheck" class="hidden" style="display: none;">
     <div class="h-captcha" data-captcha="true"></div>
+    <input type="hidden" name="redirect" value="{window.location.origin}/contact/submitted" style="display: none;">
     <button class="button" type="submit"><i class="twa twa-rocket"></i>&nbsp&nbsp{$_("send")}</button>
 </form>
