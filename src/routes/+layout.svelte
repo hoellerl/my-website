@@ -1,24 +1,27 @@
 <style lang="scss">
     @import url(https://cdn.jsdelivr.net/gh/SebastianAigner/twemoji-amazing/twemoji-amazing.css); // from https://cdn.jsdelivr.net/gh/SebastianAigner/twemoji-amazing/twemoji-amazing.css
-
     @font-face {
         font-family: 'ABeeZee';
         src: url('$lib/fonts/ABeeZee-Regular.ttf') format('truetype');
         font-style: normal;
     }
-
     @font-face {
         font-family: 'ABeeZee';
         src: url('$lib/fonts/ABeeZee-Italic.ttf') format('truetype');
         font-style: italic;
     }
 
+    // variables
+    :global(:root){
+      --rounding: 15px;
+      --bg: #211d1d;
+    }
+
     :root{
         text-align: center;
         color: wheat;
         font-family: 'ABeeZee', sans-serif;
-        background: #211d1d;
-        --rounding: 15px;
+        background: var(--bg);
     }
 
     #content{
@@ -191,6 +194,6 @@
 </div>
 
 
-<footer>
+<footer id="footer">
     <p>© {new Date(2023, 0,1).getFullYear()} Adam Höllerl{@html footerSep}{@html $_("made-with-love")}{@html footerSep}<a href="https://github.com/hoellerl/my-website">{$_("source")}</a></p>
 </footer>

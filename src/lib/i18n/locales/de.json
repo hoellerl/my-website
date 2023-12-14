@@ -22,6 +22,8 @@
   "contact-header": "Hier kannst du mich <span>kontaktieren</span>",
   "contact-email": "Deine E-Mail",
   "contact-email-placeholder": "dein.name@beispiel.com",
+  "contact-name": "Dein Name",
+    "contact-name-placeholder": "Dein Name",
   "contact-subject": "Betreff",
   "contact-subject-placeholder": "Betreff: Ein toller Grund um zu schreiben!",
   "contact-message": "Deine Nachricht",
