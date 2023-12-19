@@ -91,6 +91,7 @@
 
     :global(a){
         color: var(--text);
+      text-decoration: underline;
         transition: color 0.3s ease;
         &:hover {
             color: var(--accent);

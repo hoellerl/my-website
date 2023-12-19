@@ -7,7 +7,7 @@
   "greeting": "Hi, my name is ",
   "source": "Source code",
   "made-with-love": "Made with <i class=\"twa twa-sparkling-heart\" ><span>love</span></i> with Svelte",
-  "summary": "I'm a software and web developer living in Linz, Austria and currently attending HTL Leonding.",
+  "summary": "I am a passionate software and web developer living in Linz, Austria.<br> I am currently in my third year of computer science at HTL Leonding. <br> Find out more <a href='/about'>about me</a> or check out some of my <a href='/projects'>projects</a>.",
 
   "404-sorry": "the page you were trying to view does not exist :(",
   "go-back": "Go back to the homepage",

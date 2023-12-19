@@ -12,7 +12,6 @@
     display: flex;
     flex-direction: column;
     justify-content: center;
-    align-items: center;
     min-height: calc(100vh - 300px);
   }
 
@@ -21,8 +20,7 @@
         margin-bottom: 0;
     }
     p{
-        font-size: 1.6rem;
-        margin-top: 0;
+        font-size: 2rem;
         color: var(--sec-text);
 
     }
@@ -30,5 +28,5 @@
 
 <div class="centered-content">
   <h1>{$_("greeting")}<span>Adam</span> <i class="twa twa-waving-hand"/></h1>
-  <p>{$_("summary")}</p>
+  <p>{@html $_("summary")}</p>
 </div>
