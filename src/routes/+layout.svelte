@@ -73,7 +73,7 @@
         .logo{
           margin-right: var(--side-spacing);
           img{
-            height: 100%;
+            height: 70px;
           }
         }
     }
