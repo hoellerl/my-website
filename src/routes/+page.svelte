@@ -29,6 +29,6 @@
 </style>
 
 <div class="centered-content">
-  <h1>{$_("greeting")}<span>Adam</span> <i class="twa twa-waving-hand"><span>waving-hand</span></i></h1>
+  <h1>{$_("greeting")}<span>Adam</span> <i class="twa twa-waving-hand"/></h1>
   <p>{$_("summary")}</p>
 </div>
