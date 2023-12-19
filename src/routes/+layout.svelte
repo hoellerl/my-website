@@ -1,26 +1,41 @@
 <style lang="scss">
     @import url(https://cdn.jsdelivr.net/gh/SebastianAigner/twemoji-amazing/twemoji-amazing.css); // from https://cdn.jsdelivr.net/gh/SebastianAigner/twemoji-amazing/twemoji-amazing.css
     @font-face {
-        font-family: 'ABeeZee';
-        src: url('$lib/fonts/ABeeZee-Regular.ttf') format('truetype');
+        font-family: 'Carlito';
+        src: url('$lib/fonts/Carlito-Regular.ttf') format('truetype');
         font-style: normal;
     }
     @font-face {
-        font-family: 'ABeeZee';
-        src: url('$lib/fonts/ABeeZee-Italic.ttf') format('truetype');
+        font-family: 'Carlito';
+        src: url('$lib/fonts/Carlito-Italic.ttf') format('truetype');
+        font-style: italic;
+    }
+    @font-face {
+        font-family: 'Carlito';
+        src: url('$lib/fonts/Carlito-Bold.ttf') format('truetype');
+        font-weight: bold;
+    }
+    @font-face {
+        font-family: 'Carlito';
+        src: url('$lib/fonts/Carlito-BoldItalic.ttf') format('truetype');
+        font-weight: bold;
         font-style: italic;
     }
 
     // variables
     :global(:root){
+      --text: white;
+      --sec-text: #c3c7cb;
       --rounding: 15px;
-      --bg: #211d1d;
+      --bg: #1d2021;
+      --accent: #F6FF00;
+      --sec-bg: #393e46;
     }
 
     :root{
         text-align: center;
-        color: wheat;
-        font-family: 'ABeeZee', sans-serif;
+        color: var(--text);
+        font-family: 'Carlito', sans-serif;
         background: var(--bg);
     }
 
@@ -30,10 +45,11 @@
 
 
     nav {
+      --side-spacing: 30px;
         display: flex;
-        margin: -7px 0 30px;
+        margin: -7px 0 var(--side-spacing);
         padding: 20px 50px;
-        background: #312c2c;
+        background: #2c2e31;
         justify-content: space-between;
         font-size: 1.2rem;
 
@@ -44,7 +60,7 @@
             align-items: center;
         }
 
-        button, .spacer {
+        button, .logo {
             display: flex;
             align-items: center;
             justify-content: center;
@@ -54,13 +70,16 @@
             border: none;
             width: 50px;
             flex-shrink: 0;
-
         }
-
-      .spacer img{
-        width: 50px;
+      button{
+        margin-left: var(--side-spacing);
       }
-
+        .logo{
+          margin-right: var(--side-spacing);
+          img{
+            height: 100%;
+          }
+        }
     }
 
     footer {
@@ -75,10 +94,10 @@
     }
 
     :global(a){
-        color: wheat;
+        color: var(--text);
         transition: color 0.3s ease;
         &:hover {
-            color: #ee2956;
+            color: var(--accent);
         }
     }
 
@@ -98,16 +117,16 @@
     }
 
     :global(*::selection){
-        background: #b12c4d;
-        color: wheat;
+        background: var(--accent);
+        color: black;
     }
 
     :global(h1 span){
-        color: #ee2956;
+        color: var(--accent);
     }
 
     :global(h1){
-      font-weight: 700;
+      font-weight: bolder;
     }
 
     :global(.button){
@@ -115,15 +134,15 @@
         padding: 10px 20px;
         margin: 10px;
         border-radius: var(--rounding);
-        background-color: #413434;
+        background-color: var(--sec-bg);
         border: #1f1d1d 1.5px solid;
-        color: wheat;
+        color: var(--text);
         text-decoration: none;
         transition: 0.3s ease;
       &:hover{
         transform: scale(1.05);
         box-shadow:  0 0 5px rgba(0, 0, 0, 0.5);
-        color: wheat;
+        color: var(--text);
       }
 
       &:active{
@@ -169,25 +188,28 @@
 
     function changeLocale(){
         if (($locale as string).startsWith('en')) {
-            locale.set('de')
+            locale.set('de');
         } else {
-            locale.set('en')
+            locale.set('en');
         }
 
     }
 </script>
 <nav>
-    <a class="spacer" href="/"><img src="/favicon.svg" alt="logo"></a>
     <div>
-        <a class="button" href="/">Home</a>
+    <a class="logo" href="/"><img src="/favicon.svg" alt="logo"></a>
+        <h1>Adam Höllerl</h1>
+    </div>
+    <div>
+        <a class="button" href="/">{$_("home")}</a>
         <a class="button" href="/about">{$_("about")}</a>
         <a class="button" href="/contact">{$_("contact")}</a>
         <a class="button" href="/projects">{$_("projects")}</a>
-    </div>
     <button type="button" on:click={changeLocale}>
         {#if $locale?.startsWith('en')}<i class="twa twa-flag-{deCountries[germanLocation]??'germany'}"><span>Deutsch</span></i>
         {:else}<i class="twa twa-flag-{enCountries[englishLocation]??'united-kingdom'}" ><span>English</span></i>{/if}
     </button>
+    </div>
 </nav>
 <div id="content">
 <slot></slot>
@@ -195,5 +217,5 @@
 
 
 <footer id="footer">
-    <p>© {new Date(2023, 0,1).getFullYear()} Adam Höllerl{@html footerSep}{@html $_("made-with-love")}{@html footerSep}<a href="https://github.com/hoellerl/my-website">{$_("source")}</a></p>
+    <p>© {new Date(Date.now()).getFullYear()} Adam Höllerl{@html footerSep}{@html $_("made-with-love")}{@html footerSep}<a href="https://github.com/hoellerl/my-website">{$_("source")}</a></p>
 </footer>

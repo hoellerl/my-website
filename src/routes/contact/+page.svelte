@@ -7,8 +7,8 @@
         box-sizing: border-box;
         margin-bottom: 10px;
         margin-top: 10px;
-        background-color: #312c2c;
-        color: #f5e2c3;
+        background-color: var(--sec-bg);
+        color: var(--sec-text);
         font-size: 1rem;
         font-family: 'ABeeZee', sans-serif;
     }
@@ -67,7 +67,7 @@
 </script>
 
 <svelte:head>
-    <title>Kontakt | Adam Höllerl</title>
+    <title>{$_("contact")} | Adam Höllerl</title>
 </svelte:head>
 
 <h1>{@html $_("contact-header")}</h1>

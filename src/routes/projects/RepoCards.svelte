@@ -1,13 +1,21 @@
 <script lang="ts">
     import {onMount} from "svelte";
-
-    let repos: any[] = [];
+    interface Repo {
+        updated_at: number;
+        html_url:string,
+        name:string,
+        stargazers_count:number,
+        language:string,
+        description:string,
+        fork:boolean,
+    }
+    let repos: Repo[] = [];
 
     async function fetchRepos() {
         repos = await fetch('https://api.github.com/users/hoellerl/repos?per_page=9')
             .then(res => res.json())
-            .then(res => res.filter((repo: any) => !repo.fork))
-            .then(res => res.sort((a: any, b: any) => {
+            .then(res => res.filter((repo: Repo) => !repo.fork))
+            .then(res => res.sort((a: Repo, b: Repo) => {
                 const diff = b.stargazers_count - a.stargazers_count;
                 if (diff === 0) {
                     return new Date(b.updated_at).getTime() - new Date(a.updated_at).getTime();
@@ -15,8 +23,6 @@
                 return diff;
             }));
     }
-
-    // Call the fetchRepos function when the component is mounted
     onMount(fetchRepos);
 </script>
 
@@ -37,7 +43,7 @@
     border-radius: var(--rounding);
     text-decoration: none;
     padding: 0 10px;
-    background-color: #312c2c;
+    background-color: var(--sec-bg);
     width: 19vw;
     min-width: 10vw;
     transition:  transform 0.3s ease, box-shadow 0.3s ease, color 0.3s ease;
@@ -46,7 +52,7 @@
     h2 {
       font-size: 1.4rem;
       margin-bottom: 5px;
-      color: wheat;
+      color: var(--text);
     }
 
     &:hover{
@@ -66,13 +72,13 @@
     }
 
     .desc{
-      color: #ccb690;
+      color: var(--sec-text);
     }
 
     .bottom-row {
       display: flex;
       justify-content: space-between;
-      color: wheat;
+      color: var(--text);
     }
   }
 
@@ -90,7 +96,7 @@
         <a href="{repo.html_url}" class="card" target="_blank">
             <div>
                 <h2>{repo.name}</h2>
-                <p class="desc">{repo.description}</p>
+                <p class="desc">{repo.description??""}</p>
             </div>
             <div class="bottom-row">
                 <p><i class="twa twa-globe-with-meridians twa-lg"><span>Language</span></i><span>{repo.language}</span></p>

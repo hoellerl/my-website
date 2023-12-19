@@ -8,7 +8,7 @@
 
 
 <svelte:head>
-    <title>Projekte | Adam Höllerl</title>
+    <title>{$_("projects")} | Adam Höllerl</title>
 </svelte:head>
 
 <h1>{@html $_("projects-header")}</h1>

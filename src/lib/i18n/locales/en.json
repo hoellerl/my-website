@@ -2,8 +2,9 @@
   "about": "About me",
   "contact": "Contact",
   "projects": "Projects",
+    "home": "Home",
 
-  "greeting": "Hi, I'm ",
+  "greeting": "Hi, my name is ",
   "source": "Source code",
   "made-with-love": "Made with <i class=\"twa twa-sparkling-heart\" ><span>love</span></i> with Svelte",
   "summary": "I'm a software and web developer living in Linz, Austria and currently attending HTL Leonding.",
@@ -25,7 +26,7 @@
   "contact-name": "Your name",
     "contact-name-placeholder": "Your Name",
   "contact-subject": "Subject",
-  "contact-subject-placeholder": "Betreff: An Awesome Reason To Chat!",
+  "contact-subject-placeholder": "Subject: An Awesome Reason To Chat!",
   "contact-message": "Your message",
   "contact-message-placeholder": "I just wanted to say...",
   "send": "Send"

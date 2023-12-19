@@ -2,14 +2,14 @@
   "about": "Über mich",
   "contact": "Kontakt",
   "projects": "Projekte",
-
-  "greeting": "Hi, ich bin ",
+  "home": "Startseite",
+  "greeting": "Hi, mein Name ist ",
   "source": "Quellcode",
   "made-with-love": "Gemacht mit <i class=\"twa twa-sparkling-heart\" ><span>Liebe</span></i> mit Svelte",
   "summary": "Ich bin Software- und Webentwickler, lebe in Linz, Österreich und gehe momentan auf die HTL Leonding.",
 
   "404-sorry": "die Seite, die du suchst, existiert nicht :(",
-  "go-back": "Zurück zur Homepage",
+  "go-back": "Zurück zur Startseite",
 
   "about-header": "Du willst also mehr <span>über mich</span> wissen?",
   "about-summary": "Ich heiße Adam Höllerl und lebe in Linz, Österreich. Ich bin ein leidenschaftlicher Software- und Webentwickler und lerne derzeitig Programmieren an der HTL Leonding.",

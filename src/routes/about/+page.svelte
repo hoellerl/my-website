@@ -16,7 +16,7 @@
         width: fit-content;
         justify-content: center;
         border-radius: 15px;
-        background-color: #312c2c;
+        background-color: var(--sec-bg);
         margin: 0 20px;
     }
 
@@ -34,7 +34,7 @@
 
 
 <svelte:head>
-    <title>Über mich | Adam Höllerl</title>
+    <title>{$_("about")} | Adam Höllerl</title>
 </svelte:head>
 
 <h1>{@html $_("about-header")}</h1>
