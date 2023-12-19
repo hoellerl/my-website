@@ -155,6 +155,8 @@
 
 <script lang="ts">
     import { locale, _} from 'svelte-i18n';
+    import { injectSpeedInsights } from "@vercel/speed-insights/sveltekit";
+    injectSpeedInsights();
     const footerSep = "&nbsp;&nbsp;•&nbsp;&nbsp;";
     const timezone = Intl.DateTimeFormat().resolvedOptions().timeZone;
     let deCountries = ["germany", "austria", "switzerland", "liechtenstein"];
