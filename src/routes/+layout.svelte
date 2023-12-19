@@ -39,10 +39,6 @@
         background: var(--bg);
     }
 
-    #content{
-      padding: 0 260px;
-    }
-
 
     nav {
       --side-spacing: 30px;
@@ -111,10 +107,17 @@
         clip: rect(0, 0, 0, 0);
         border: 0;
     }
+    @media only screen and (min-width: 768px) {
+      // padding for desktop
+        #content{
+        padding: 0 260px;
+        }
+    }
 
     :global(body) {
       margin: 0; // reset default margin
     }
+
 
     :global(*::selection){
         background: var(--accent);
@@ -129,28 +132,28 @@
       font-weight: bolder;
     }
 
-    :global(.button){
-        display: inline-block;
-        padding: 10px 20px;
-        margin: 10px;
-        border-radius: var(--rounding);
-        background-color: var(--sec-bg);
-        border: #1f1d1d 1.5px solid;
-        color: var(--text);
-        text-decoration: none;
-        transition: 0.3s ease;
-      &:hover{
-        transform: scale(1.05);
-        box-shadow:  0 0 5px rgba(0, 0, 0, 0.5);
-        color: var(--text);
-      }
-
-      &:active{
-        transform: scale(0.95);
-        box-shadow:  0 0 0 rgba(0, 0, 0, 0.5);
-      }
-
+    #selector{
+        width: 20px;
+        height: 5px;
+        background: var(--accent);
+        border-radius: 10px;
+      transition: all 0.3s ease;
+        opacity: 0;
+        position: absolute;
+        bottom: 20px;
+        left: 0;
     }
+    .nav-buttons {
+      position: relative;
+        a{
+          transition: 0.6s ease;
+        text-transform: uppercase;
+          text-decoration: none;
+            margin: 30px;
+        }
+    }
+
+
 </style>
 
 <script lang="ts">
@@ -158,7 +161,8 @@
     import { injectSpeedInsights } from "@vercel/speed-insights/sveltekit";
     import { dev } from '$app/environment';
     import { inject } from '@vercel/analytics';
-
+    import {onMount} from "svelte";
+    import {page} from "$app/stores";
     inject({ mode: dev ? 'development' : 'production' });
     injectSpeedInsights();
     const footerSep = "&nbsp;&nbsp;•&nbsp;&nbsp;";
@@ -191,7 +195,6 @@
             germanLocation = 3;
             break;
     }
-
     function changeLocale(){
         if (($locale as string).startsWith('en')) {
             locale.set('de');
@@ -200,6 +203,47 @@
         }
 
     }
+
+    onMount(() => {
+        // get button which leads to current route
+        let activeButton =  document.querySelector(`.nav-buttons a[href="${window.location.pathname}"]`);
+        page.subscribe(() => {
+            activeButton =  document.querySelector(`.nav-buttons a[href="${window.location.pathname}"]`);
+        });
+        const navButtons = document.querySelectorAll('.nav-buttons a');
+        const parentDiv = document.querySelector('.nav-buttons');
+        const selector = document.querySelector('#selector') as HTMLElement;
+        if (!selector || !parentDiv || !navButtons || !activeButton){
+            return;
+        }
+            let currentHoveredButton = activeButton;
+
+        const parentRect = parentDiv.getBoundingClientRect();
+        const selectorWidth = selector.offsetWidth;
+        moveButton(activeButton);
+
+        navButtons.forEach((button) => {
+        button.addEventListener('mouseover', () => {
+            moveButton(button);
+            currentHoveredButton = button;
+        });
+
+        button.addEventListener('mouseout', () => {
+            setTimeout(() => {
+                if (activeButton && button === currentHoveredButton && button !== activeButton) {
+                    moveButton(activeButton);
+                }
+            }, 1000);
+
+        });
+    });
+    function moveButton(bt: Element){
+        const rect = bt.getBoundingClientRect();
+        const distance = (rect.left + rect.width / 2) - parentRect.left - selectorWidth/2;
+        selector.style.left = `${distance}px`;
+        selector.style.opacity = '1';
+    }
+    });
 </script>
 <nav>
     <div>
@@ -207,10 +251,15 @@
         <h1>Adam Höllerl</h1>
     </div>
     <div>
-        <a class="button" href="/">{$_("home")}</a>
-        <a class="button" href="/about">{$_("about")}</a>
-        <a class="button" href="/contact">{$_("contact")}</a>
-        <a class="button" href="/projects">{$_("projects")}</a>
+    <div class="nav-buttons">
+
+        <a href="/">{$_("home")}</a>
+        <a href="/about">{$_("about")}</a>
+        <a href="/contact">{$_("contact")}</a>
+        <a href="/projects">{$_("projects")}</a>
+        <div id="selector"></div>
+
+    </div>
     <button type="button" on:click={changeLocale}>
         {#if $locale?.startsWith('en')}<i class="twa twa-flag-{deCountries[germanLocation]??'germany'}"><span>Deutsch</span></i>
         {:else}<i class="twa twa-flag-{enCountries[englishLocation]??'united-kingdom'}" ><span>English</span></i>{/if}

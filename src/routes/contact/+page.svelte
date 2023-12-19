@@ -47,8 +47,30 @@
       font-size: 1.1rem;
     }
 
+    .button{
+      display: inline-block;
+      padding: 10px 20px;
+      margin: 10px;
+      border-radius: var(--rounding);
+      background-color: var(--sec-bg);
+      border: #1f1d1d 1.5px solid;
+      color: var(--text);
+      text-decoration: none;
+      transition: 0.3s ease;
+      &:hover{
 
+        transform: scale(1.05);
+        box-shadow:  0 0 5px rgba(0, 0, 0, 0.5);
+        color: var(--text);
 
+      }
+
+      &:active{
+        transform: scale(0.95);
+        box-shadow:  0 0 0 rgba(0, 0, 0, 0.5);
+      }
+
+    }
 </style>
 
 <script lang="ts">
