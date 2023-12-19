@@ -144,12 +144,16 @@
         left: 0;
     }
     .nav-buttons {
+
       position: relative;
         a{
-          transition: 0.6s ease;
-        text-transform: uppercase;
-          text-decoration: none;
+            transition: 0.6s ease;
+            text-transform: uppercase;
+            text-decoration: none;
             margin: 30px;
+            &:active ~ #selector{
+                transform: scale(0.5);
+            }
         }
     }
 
@@ -201,48 +205,65 @@
         } else {
             locale.set('en');
         }
-
+        setTimeout(() => {
+            buttonHoverSetup();
+        }, 100);
     }
-
-    onMount(() => {
+    function buttonHoverSetup(){
         // get button which leads to current route
         let activeButton =  document.querySelector(`.nav-buttons a[href="${window.location.pathname}"]`);
-        page.subscribe(() => {
-            activeButton =  document.querySelector(`.nav-buttons a[href="${window.location.pathname}"]`);
-        });
+        let isHovering = false;
         const navButtons = document.querySelectorAll('.nav-buttons a');
         const parentDiv = document.querySelector('.nav-buttons');
         const selector = document.querySelector('#selector') as HTMLElement;
         if (!selector || !parentDiv || !navButtons || !activeButton){
             return;
         }
-            let currentHoveredButton = activeButton;
-
+        selector.style.opacity = '1';
         const parentRect = parentDiv.getBoundingClientRect();
         const selectorWidth = selector.offsetWidth;
+        page.subscribe(() => {
+            activeButton =  document.querySelector(`.nav-buttons a[href="${window.location.pathname}"]`);
+            if (activeButton){
+                moveButton(activeButton);
+            }
+        });
         moveButton(activeButton);
 
         navButtons.forEach((button) => {
-        button.addEventListener('mouseover', () => {
-            moveButton(button);
-            currentHoveredButton = button;
-        });
+            button.addEventListener('mouseover', () => {
+                moveButton(button);
+                isHovering = true;
+            });
 
-        button.addEventListener('mouseout', () => {
-            setTimeout(() => {
-                if (activeButton && button === currentHoveredButton && button !== activeButton) {
-                    moveButton(activeButton);
-                }
-            }, 1000);
+            button.addEventListener('mouseout', () => {
+                isHovering = false;
+                setTimeout(() => {
+                    if (activeButton && !isHovering && button !== activeButton) {
+                        moveButton(activeButton);
+                    }
+                }, 1000);
 
+            });
         });
-    });
-    function moveButton(bt: Element){
-        const rect = bt.getBoundingClientRect();
-        const distance = (rect.left + rect.width / 2) - parentRect.left - selectorWidth/2;
-        selector.style.left = `${distance}px`;
-        selector.style.opacity = '1';
+        function moveButton(bt: Element){
+            const rect = bt.getBoundingClientRect();
+            const distance = (rect.left + rect.width / 2) - parentRect.left - selectorWidth / 2;
+            selector.style.left = `${distance}px`;
+        }
     }
+
+    onMount(() => {
+        // 50 ms timeout since chrome messes up the hover effect without it
+        setTimeout(() => {
+            buttonHoverSetup();
+        }, 50);
+
+        window.addEventListener('resize', () => {
+            buttonHoverSetup();
+        });
+
+
     });
 </script>
 <nav>
