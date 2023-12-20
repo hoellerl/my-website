@@ -11,6 +11,13 @@
         color: var(--sec-text);
         font-size: 1rem;
         font-family: 'ABeeZee', sans-serif;
+        transition: all 0.3s ease;
+        &:focus{
+          outline: none;
+          transform: scale(1.01);
+          border: 1.5px solid var(--sec-text);
+            box-shadow:  0 0 5px rgba(0, 0, 0, 0.5);
+        }
     }
 
   div.two-inputs{
