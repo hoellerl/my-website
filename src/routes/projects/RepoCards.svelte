@@ -8,13 +8,23 @@
         language:string,
         description:string,
         fork:boolean,
+        textwidth:number
     }
     let repos: Repo[] = [];
 
     async function fetchRepos() {
-        repos = await fetch('https://api.github.com/users/hoellerl/repos?per_page=9')
+        repos = await fetch('https://api.github.com/users/hoellerl/repos?per_page=100')
             .then(res => res.json())
             .then(res => res.filter((repo: Repo) => !repo.fork))
+                .then(res => res.map((repo: Repo) => {
+                const canvas = document.createElement('canvas');
+                const ctx = canvas.getContext('2d');
+                if (ctx) {
+                    ctx.font = '1.4rem "Calibri"';
+                    repo.textwidth = ctx.measureText(repo.name).width;
+                }
+                return repo;
+            }))
             .then(res => res.sort((a: Repo, b: Repo) => {
                 const diff = b.stargazers_count - a.stargazers_count;
                 if (diff === 0) {
@@ -31,7 +41,7 @@
     .card-container {
         display: flex;
         flex-wrap: wrap;
-        gap: 20px;
+        gap: 35px;
         justify-content: space-around;
     }
 
@@ -47,22 +57,39 @@
         width: 19vw;
         min-width: 10vw;
         transition:  transform 0.3s ease, box-shadow 0.3s ease, color 0.3s ease;
-        margin: 0 15px;
 
         h2 {
             font-size: 1.4rem;
-            padding-bottom: 5px;
             margin-bottom: 5px;
             color: var(--text);
         }
 
         .divider{
-            width: calc(60%);
             height: 2px;
             background: var(--accent);
-            border-radius: 100rem;
-            //background: linear-gradient(to right, var(--sec-bg) 10%, var(--accent) 50%, var(--sec-bg) 90%);
-            margin: 7px auto 10px auto;
+            border-radius: var(--rounding);
+            margin: 0 auto 0 auto;
+            transition: all 0.3s ease;
+        }
+
+        &:hover .divider{
+            height: 6px;
+            padding: 0 10px;
+            background: linear-gradient(90deg, orange 0%, var(--accent) 50%, orange 100%);
+            background-size: 200% 200%;
+            animation: gradient-move 3s ease infinite;
+          
+            @keyframes gradient-move {
+                0% {
+                    background-position: 0% 50%;
+                }
+                50% {
+                    background-position: 100% 50%;
+                }
+                100% {
+                    background-position: 0% 50%;
+                }
+            }
         }
 
         &:hover{
@@ -104,7 +131,7 @@
         <a href="{repo.html_url}" class="card" target="_blank">
             <div>
                 <h2>{repo.name}</h2>
-                <div class="divider"></div>
+                <div class="divider" style="width: calc({repo.textwidth}px + 20px);"></div>
                 <p class="desc">{repo.description??""}</p>
             </div>
             <div class="bottom-row">

@@ -6,7 +6,7 @@
   "greeting": "Hi, ich heiße ",
   "source": "Quellcode",
   "made-with-love": "Gemacht mit <i class=\"twa twa-sparkling-heart\" ><span>Liebe</span></i> mit Svelte",
-  "summary": "Ich bin Software- und Webentwickler und lebe in Linz, Österreich. <br> Derzeitig bin ich im 3. Jahrgang Informatik an der HTL Leonding. <br> Finde mehr <a href='/about'>über mich</a> heraus oder schau dir meine <a href='/projects'>Projekte</a> an.",
+  "summary": "Ich bin Software- und Webentwickler und lebe in Linz, Österreich. <br> Momentan besuche ich den 3. Jahrgang Informatik an der HTL Leonding. <br> Finde mehr <a href='/about'>über mich</a> heraus oder schau dir meine <a href='/projects'>Projekte</a> an.",
 
   "404-sorry": "die Seite, die du suchst, existiert nicht :(",
   "go-back": "Zurück zur Startseite",
