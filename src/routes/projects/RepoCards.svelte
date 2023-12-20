@@ -51,8 +51,16 @@
 
     h2 {
       font-size: 1.4rem;
+      padding-bottom: 5px;
       margin-bottom: 5px;
       color: var(--text);
+    }
+
+    .divider{
+        width: calc(100% + 20px);
+        height: 2px;
+background: linear-gradient(to right, var(--sec-bg) 10%, var(--accent) 50%, var(--sec-bg) 90%);
+      margin: 7px -10px;
     }
 
     &:hover{
@@ -96,6 +104,7 @@
         <a href="{repo.html_url}" class="card" target="_blank">
             <div>
                 <h2>{repo.name}</h2>
+                <div class="divider"></div>
                 <p class="desc">{repo.description??""}</p>
             </div>
             <div class="bottom-row">
