@@ -3,8 +3,8 @@
 </script>
 
 <style lang="scss">
-    h1{
-      font-size: var(--text-size-large);
+    span{
+      font-size: calc(var(--text-size-large) + 1rem);
     }
     a{
         font-size: var(--text-size);
@@ -15,5 +15,5 @@
     <title>404 | Adam Höllerl</title>
 </svelte:head>
 
-<h1><span>Sorry,</span> {$_("404-sorry")}</h1>
+<h1><span>Sorry,</span><br> {$_("404-sorry")}</h1>
 <a href="/">{$_("go-back")}</a>

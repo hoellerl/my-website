@@ -1,4 +1,5 @@
 <style lang="scss">
+
     input, textarea {
         width: 100%;
         padding: 10px;
@@ -41,17 +42,19 @@
   }
 
     textarea{
+      resize: vertical;
       border-bottom-right-radius: 0;
     }
 
     label{
         font-weight: bold;
-    font-size: 1.1rem;
+      font-size: var(--text-size-small);
     }
 
     button{
       vertical-align: middle;
-      font-size: 1.1rem;
+      font-size: var(--text-size-small);
+
     }
 
     .button{
@@ -78,6 +81,7 @@
       }
 
     }
+
 </style>
 
 <script lang="ts">
@@ -92,7 +96,7 @@
         script.async = true;
         script.defer = true;
         document.body.appendChild(script);
-    })
+    });
 </script>
 
 <svelte:head>
@@ -117,7 +121,7 @@
     <label for="subject">{$_("contact-subject")}</label><br>
     <input type="text" name="subject" placeholder="{$_('contact-subject-placeholder')}" required><br>
     <label for="message">{$_("contact-message")}</label><br>
-    <textarea name="message" placeholder="{$_('contact-message-placeholder')}" required rows="8" cols="40"></textarea><br>
+    <textarea name="message" placeholder="{$_('contact-message-placeholder')}" required rows="5" cols="40"></textarea><br>
     <input type="checkbox" name="botcheck" class="hidden" style="display: none;">
     <div class="h-captcha" data-captcha="true" data-theme="dark"></div>
     <input type="hidden" name="redirect" value="{win?.location?.origin??'hoellerl.svelte.app'}/contact/submitted" style="display: none;">

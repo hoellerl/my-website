@@ -28,7 +28,16 @@
     }
 
     h2{
+        font-size: var(--text-size-medium);
         margin: 40px 0 0 0;
+    }
+
+    h3{
+        font-size: calc(var(--text-size-small) + 0.4rem);
+    }
+
+    p{
+      font-size: var(--text-size-small);
     }
 </style>
 

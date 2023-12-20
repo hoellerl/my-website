@@ -27,7 +27,7 @@
       --text: white;
       --sec-text: #c3c7cb;
       --text-size-huge: 6rem;
-      --text-size-large: 4.5rem;
+      --text-size-large: 3.5rem;
       --text-size-medium: 2.5rem;
       --text-size: 2rem;
       --text-size-small: 1.2rem;
@@ -46,7 +46,11 @@
     }
 
 
+
+
+
     nav {
+      flex: 0 1 auto;
       --side-spacing: 30px;
         display: flex;
         margin: -7px 0 var(--side-spacing);
@@ -61,35 +65,36 @@
             justify-content: center;
             align-items: center;
         }
+        h1{
+          font-size: var(--text-size);
+        }
 
         button, .logo {
             display: flex;
             align-items: center;
             justify-content: center;
             cursor: pointer;
-            font-size: var(--text-size);
             background: none;
             border: none;
-            width: 50px;
             flex-shrink: 0;
         }
-      button{
-        margin-left: var(--side-spacing);
-      }
+        button{
+            width: 50px;
+            margin-left: var(--side-spacing);
+            font-size: var(--text-size);
+        }
         .logo{
-          margin-right: var(--side-spacing);
-          img{
-            height: 70px;
-          }
+            margin-right: var(--side-spacing);
+            img{
+                height: 70px;
+            }
         }
     }
 
     footer {
+        flex: 0 1 30px;
         font-size: var(--text-size-tiny);
-        position: absolute;
-        bottom: 0;
-        right: 0;
-        left: 0;
+
         a {
             display: inline-block;
         }
@@ -97,7 +102,7 @@
 
     :global(a){
         color: var(--text);
-      text-decoration: underline;
+        text-decoration: underline;
         transition: color 0.3s ease;
         &:hover {
             color: var(--accent);
@@ -114,15 +119,21 @@
         clip: rect(0, 0, 0, 0);
         border: 0;
     }
-    @media only screen and (min-width: 768px) {
+    @media only screen and (min-width: 1024px) {
       // padding for desktop
         #content{
-        padding: 0 260px;
-        }
+        padding: 0 15vw;
+        }   
     }
 
     :global(body) {
       margin: 0; // reset default margin
+      display: flex;
+      flex-flow: column;
+      min-height: 100vh;
+      #content{
+        flex: 1 1 auto;
+      }
     }
 
 
@@ -137,9 +148,11 @@
 
     :global(h1){
       font-weight: bolder;
+      font-size: var(--text-size-large);
     }
 
     #selector{
+      z-index: 1;
         width: 20px;
         height: 5px;
         background: var(--accent);
@@ -154,10 +167,13 @@
 
       position: relative;
         a{
+          z-index: 2;
+              padding: 25px;
+             // margin: -30px;
             transition: 0.6s ease;
             text-transform: uppercase;
             text-decoration: none;
-            margin: 30px;
+           margin: 5px;
             &:active ~ #selector{
                 transform: scale(0.5);
             }
@@ -174,43 +190,69 @@
     import { inject } from '@vercel/analytics';
     import {onMount} from "svelte";
     import {page} from "$app/stores";
-    inject({ mode: dev ? 'development' : 'production' });
-    injectSpeedInsights();
+    import lang from "$lib/stores/langStore";
+    import {get} from "svelte/store";
+    const localLang = get(lang);
+    if (localLang !== "") {
+        locale.set(localLang);
+    }
+
     const footerSep = "&nbsp;&nbsp;•&nbsp;&nbsp;";
-    const timezone = Intl.DateTimeFormat().resolvedOptions().timeZone;
     const deCountries = ["germany", "austria", "switzerland", "liechtenstein"];
     const enCountries = ["united-kingdom", "australia", "united-states", "canada"];
-    const userLocationArr: string[] = timezone.split("/");
-    const userLocation: string = userLocationArr[0] === "Europe" ? userLocationArr[1] : userLocationArr[0]; // get country/capital name
     let englishLocation: number = 0;
     let germanLocation : number = 0;
 
-    // localization for english and german speaking countries (changing flag based on location)
-    switch (userLocation) {
-        case 'Australia':
-            englishLocation = 1;
-            break;
-        case 'America':
-            englishLocation = 2;
-            break;
-        case 'Canada':
-            englishLocation = 3;
-            break;
-        case "Vienna":
-            germanLocation = 1;
-            break;
-        case "Zurich":
-            germanLocation = 2;
-            break;
-        case "Vaduz":
-            germanLocation = 3;
-            break;
+    inject({ mode: dev ? 'development' : 'production' });
+    injectSpeedInsights();
+    changeFlagBasedOnLocation();
+
+    onMount(() => {
+        // 50 ms timeout since chrome messes up the hover effect without it
+        setTimeout(() => {
+            buttonHoverSetup();
+        }, 50);
+        // when the window is resized, recalculate the positions of the selector
+        window.addEventListener('resize', () => {
+            buttonHoverSetup();
+        });
+
+
+    });
+
+    function changeFlagBasedOnLocation(){
+        const timezone = Intl.DateTimeFormat().resolvedOptions().timeZone;
+        const userLocationArr: string[] = timezone.split("/");
+        const userLocation: string = userLocationArr[0] === "Europe" ? userLocationArr[1] : userLocationArr[0]; // get country/capital name
+        // localization for english and german speaking countries (changing flag based on location)
+        switch (userLocation) {
+            case 'Australia':
+                englishLocation = 1;
+                break;
+            case 'America':
+                englishLocation = 2;
+                break;
+            case 'Canada':
+                englishLocation = 3;
+                break;
+            case "Vienna":
+                germanLocation = 1;
+                break;
+            case "Zurich":
+                germanLocation = 2;
+                break;
+            case "Vaduz":
+                germanLocation = 3;
+                break;
+        }
     }
     function changeLocale(){
         if (($locale as string).startsWith('en')) {
             locale.set('de');
+            lang.set('de');
         } else {
             locale.set('en');
+            lang.set('en');
         }
         // short delay to account for the time it takes to change the locale
         setTimeout(() => {
@@ -272,19 +314,6 @@
             selector.style.left = `${distance}px`;
         }
     }
-
-    onMount(() => {
-        // 50 ms timeout since chrome messes up the hover effect without it
-        setTimeout(() => {
-            buttonHoverSetup();
-        }, 50);
-        // when the window is resized, recalculate the positions of the selector
-        window.addEventListener('resize', () => {
-            buttonHoverSetup();
-        });
-
-
-    });
 </script>
 <nav>
     <div>

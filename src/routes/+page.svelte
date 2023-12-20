@@ -19,8 +19,7 @@
   img {
       display: inline-block;
       height: 200px;
-      margin-left: 80px;
-      margin-bottom: -30px;
+      margin: -30px auto -30px 80px;
   }
 
     h1 {
