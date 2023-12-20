@@ -16,7 +16,7 @@
         &:focus{
           outline: none;
           transform: scale(1.01);
-          border: 1.5px solid var(--sec-text);
+          border: 1.5px solid var(--accent);
             box-shadow:  0 0 5px rgba(0, 0, 0, 0.5);
         }
     }
