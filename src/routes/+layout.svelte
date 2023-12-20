@@ -172,10 +172,10 @@
     injectSpeedInsights();
     const footerSep = "&nbsp;&nbsp;•&nbsp;&nbsp;";
     const timezone = Intl.DateTimeFormat().resolvedOptions().timeZone;
-    let deCountries = ["germany", "austria", "switzerland", "liechtenstein"];
-    let enCountries = ["united-kingdom", "australia", "united-states", "canada"];
+    const deCountries = ["germany", "austria", "switzerland", "liechtenstein"];
+    const enCountries = ["united-kingdom", "australia", "united-states", "canada"];
     const userLocationArr: string[] = timezone.split("/");
-    const userLocation: string = userLocationArr[0] === "Europe" ? userLocationArr[1] : userLocationArr[0]; // Europe is not needed
+    const userLocation: string = userLocationArr[0] === "Europe" ? userLocationArr[1] : userLocationArr[0]; // get country/capital name
     let englishLocation: number = 0;
     let germanLocation : number = 0;
 
@@ -206,6 +206,7 @@
         } else {
             locale.set('en');
         }
+        // short delay to account for the time it takes to change the locale
         setTimeout(() => {
             buttonHoverSetup();
         }, 100);
@@ -220,15 +221,18 @@
         if (!selector || !parentDiv || !navButtons || !activeButton){
             return;
         }
+        // make selector only visible once the logic is working
         selector.style.opacity = '1';
         const parentRect = parentDiv.getBoundingClientRect();
         const selectorWidth = selector.offsetWidth;
+        // when page changes, move selector to new button
         page.subscribe(() => {
             activeButton =  document.querySelector(`.nav-buttons a[href="${window.location.pathname}"]`);
             if (activeButton){
                 moveButton(activeButton);
             }
         });
+        // initial move
         moveButton(activeButton);
 
         navButtons.forEach((button) => {
@@ -239,7 +243,9 @@
 
             button.addEventListener('mouseout', () => {
                 isHovering = false;
+                // let the selector "stick" for a short amount of time
                 setTimeout(() => {
+                    // if the mouse is not hovering over any button, move the selector back to the active button
                     if (activeButton && !isHovering && button !== activeButton) {
                         moveButton(activeButton);
                     }
@@ -249,7 +255,9 @@
         });
         function moveButton(bt: Element){
             const rect = bt.getBoundingClientRect();
+            // calculate the distance from the left side of the parent div to the center of the button
             const distance = (rect.left + rect.width / 2) - parentRect.left - selectorWidth / 2;
+            // move selector to button
             selector.style.left = `${distance}px`;
         }
     }
@@ -259,7 +267,7 @@
         setTimeout(() => {
             buttonHoverSetup();
         }, 50);
-
+        // when the window is resized, recalculate the positions of the selector
         window.addEventListener('resize', () => {
             buttonHoverSetup();
         });
