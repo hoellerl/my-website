@@ -208,10 +208,10 @@
     changeFlagBasedOnLocation();
 
     onMount(() => {
-        // 50 ms timeout since chrome messes up the hover effect without it
+        // 100 ms timeout since chrome messes up the hover effect without it
         setTimeout(() => {
             buttonHoverSetup();
-        }, 50);
+        }, 100);
         // when the window is resized, recalculate the positions of the selector
         window.addEventListener('resize', () => {
             buttonHoverSetup();
