@@ -26,6 +26,12 @@
     :global(:root){
       --text: white;
       --sec-text: #c3c7cb;
+      --text-size-huge: 6rem;
+      --text-size-large: 4.5rem;
+      --text-size-medium: 2.5rem;
+      --text-size: 2rem;
+      --text-size-small: 1.2rem;
+      --text-size-tiny: 0.9rem;
       --rounding: 15px;
       --bg: #1d2021;
       --accent: #F6FF00;
@@ -47,7 +53,7 @@
         padding: 20px 50px;
         background: #2c2e31;
         justify-content: space-between;
-        font-size: 1.2rem;
+        font-size: var(--text-size-small);
 
       div{
             flex-shrink: 0;
@@ -61,7 +67,7 @@
             align-items: center;
             justify-content: center;
             cursor: pointer;
-            font-size: 2rem;
+            font-size: var(--text-size);
             background: none;
             border: none;
             width: 50px;
@@ -79,7 +85,7 @@
     }
 
     footer {
-        font-size: 0.9rem;
+        font-size: var(--text-size-tiny);
         position: absolute;
         bottom: 0;
         right: 0;
@@ -218,11 +224,10 @@
         const navButtons = document.querySelectorAll('.nav-buttons a');
         const parentDiv = document.querySelector('.nav-buttons');
         const selector = document.querySelector('#selector') as HTMLElement;
-        if (!selector || !parentDiv || !navButtons || !activeButton){
+        if (!selector || !parentDiv || !navButtons){
             return;
         }
         // make selector only visible once the logic is working
-        selector.style.opacity = '1';
         const parentRect = parentDiv.getBoundingClientRect();
         const selectorWidth = selector.offsetWidth;
         // when page changes, move selector to new button
@@ -232,8 +237,11 @@
                 moveButton(activeButton);
             }
         });
-        // initial move
-        moveButton(activeButton);
+        if (activeButton){
+            // initial move
+            moveButton(activeButton);
+        }
+
 
         navButtons.forEach((button) => {
             button.addEventListener('mouseover', () => {
@@ -254,6 +262,9 @@
             });
         });
         function moveButton(bt: Element){
+            if (selector.style.opacity !== '1'){
+                selector.style.opacity = '1';
+            }
             const rect = bt.getBoundingClientRect();
             // calculate the distance from the left side of the parent div to the center of the button
             const distance = (rect.left + rect.width / 2) - parentRect.left - selectorWidth / 2;

@@ -2,6 +2,15 @@
     import { _ } from "svelte-i18n";
 </script>
 
+<style lang="scss">
+    h1{
+      font-size: var(--text-size-large);
+    }
+    a{
+        font-size: var(--text-size);
+    }
+</style>
+
 <svelte:head>
     <title>404 | Adam Höllerl</title>
 </svelte:head>
