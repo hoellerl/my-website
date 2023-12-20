@@ -57,10 +57,12 @@
         }
 
         .divider{
-            width: calc(100% + 20px);
+            width: calc(60%);
             height: 2px;
-            background: linear-gradient(to right, var(--sec-bg) 10%, var(--accent) 50%, var(--sec-bg) 90%);
-            margin: 7px -10px;
+            background: var(--accent);
+            border-radius: 100rem;
+            //background: linear-gradient(to right, var(--sec-bg) 10%, var(--accent) 50%, var(--sec-bg) 90%);
+            margin: 7px auto 10px auto;
         }
 
         &:hover{
