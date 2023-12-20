@@ -2,10 +2,16 @@
     import { _ } from "svelte-i18n";
 </script>
 
+<style>
+    p, a{
+        font-size: var(--text-size);
+    }
+</style>
+
 <svelte:head>
     <title>{$_("contact")} | Adam Höllerl</title>
 </svelte:head>
 
-<h2>{@html $_("contact-thanks") }</h2>
+<h1>{@html $_("contact-thanks") }</h1>
 <p>{$_("contact-thanks-text")}</p>
-<a href="/">{$_("go-back")}</a>
+<a href="/">{$_("go-back")}?</a>
