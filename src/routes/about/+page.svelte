@@ -37,7 +37,7 @@
     }
 
     p{
-      font-size: var(--text-size-small);
+        font-size: var(--text-size-small);
     }
 </style>
 

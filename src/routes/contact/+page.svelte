@@ -14,72 +14,67 @@
         font-family: 'ABeeZee', sans-serif;
         transition: all 0.3s ease;
         &:focus{
-          outline: none;
-          transform: scale(1.01);
-          border: 1.5px solid var(--accent);
+            outline: none;
+            transform: scale(1.01);
+            border: 1.5px solid var(--accent);
             box-shadow:  0 0 5px rgba(0, 0, 0, 0.5);
         }
     }
 
-  div.two-inputs{
-    display: flex;
-    flex-direction: row;
-    justify-content: space-between;
-    input, div{
-      &:first-child{
-        margin-right: 10px;
-      }
-      &:last-child{
-        margin-left: 10px;
-      }
-    }
-    div{
-        width: 50%;
-      display: flex;
+    div.two-inputs{
+        display: flex;
         flex-direction: row;
-        justify-content: center;
+        justify-content: space-between;
+        input, div{
+            &:first-child{
+                margin-right: 10px;
+            }
+            &:last-child{
+                margin-left: 10px;
+            }
+        }
+        div{
+            width: 50%;
+            display: flex;
+            flex-direction: row;
+            justify-content: center;
+        }
     }
-  }
 
     textarea{
-      resize: vertical;
-      border-bottom-right-radius: 0;
+        resize: vertical;
+        border-bottom-right-radius: 0;
     }
 
     label{
         font-weight: bold;
-      font-size: var(--text-size-small);
+        font-size: var(--text-size-small);
     }
 
     button{
-      vertical-align: middle;
-      font-size: var(--text-size-small);
-
+        vertical-align: middle;
+        font-size: var(--text-size-small);
     }
 
     .button{
-      display: inline-block;
-      padding: 10px 20px;
-      margin: 10px;
-      border-radius: var(--rounding);
-      background-color: var(--sec-bg);
-      border: #1f1d1d 1.5px solid;
-      color: var(--text);
-      text-decoration: none;
-      transition: 0.3s ease;
-      &:hover{
-
-        transform: scale(1.05);
-        box-shadow:  0 0 5px rgba(0, 0, 0, 0.5);
+        display: inline-block;
+        padding: 10px 20px;
+        margin: 10px;
+        border-radius: var(--rounding);
+        background-color: var(--sec-bg);
+        border: #1f1d1d 1.5px solid;
         color: var(--text);
-
-      }
-
-      &:active{
-        transform: scale(0.95);
-        box-shadow:  0 0 0 rgba(0, 0, 0, 0.5);
-      }
-
+        text-decoration: none;
+        transition: 0.3s ease;
+        &:hover{
+            transform: scale(1.05);
+            box-shadow:  0 0 5px rgba(0, 0, 0, 0.5);
+            color: var(--text);
+        }
+        &:active{
+            transform: scale(0.95);
+            box-shadow:  0 0 0 rgba(0, 0, 0, 0.5);
+        }
     }
 
 </style>

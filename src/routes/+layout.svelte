@@ -24,18 +24,18 @@
 
     // variables
     :global(:root){
-      --text: white;
-      --sec-text: #c3c7cb;
-      --text-size-huge: 6rem;
-      --text-size-large: 3.5rem;
-      --text-size-medium: 2.5rem;
-      --text-size: 2rem;
-      --text-size-small: 1.2rem;
-      --text-size-tiny: 0.9rem;
-      --rounding: 15px;
-      --bg: #1d2021;
-      --accent: #F6FF00;
-      --sec-bg: #393e46;
+        --text: white;
+        --sec-text: #c3c7cb;
+        --text-size-huge: 6rem;
+        --text-size-large: 3.5rem;
+        --text-size-medium: 2.5rem;
+        --text-size: 2rem;
+        --text-size-small: 1.2rem;
+        --text-size-tiny: 0.9rem;
+        --rounding: 15px;
+        --bg: #1d2021;
+        --accent: #F6FF00;
+        --sec-bg: #393e46;
     }
 
     :root{
@@ -50,8 +50,8 @@
 
 
     nav {
-      flex: 0 1 auto;
-      --side-spacing: 30px;
+        flex: 0 1 auto;
+        --side-spacing: 30px;
         display: flex;
         margin: -7px 0 var(--side-spacing);
         padding: 20px 50px;
@@ -59,14 +59,14 @@
         justify-content: space-between;
         font-size: var(--text-size-small);
 
-      div{
+        div{
             flex-shrink: 0;
             display: flex;
             justify-content: center;
             align-items: center;
         }
         h1{
-          font-size: var(--text-size);
+            font-size: var(--text-size);
         }
 
         button, .logo {
@@ -120,20 +120,20 @@
         border: 0;
     }
     @media only screen and (min-width: 1024px) {
-      // padding for desktop
+        // padding for desktop
         #content{
-        padding: 0 15vw;
-        }   
+            padding: 0 15vw;
+        }
     }
 
     :global(body) {
-      margin: 0; // reset default margin
-      display: flex;
-      flex-flow: column;
-      min-height: 100vh;
-      #content{
-        flex: 1 1 auto;
-      }
+        margin: 0; // reset default margin
+        display: flex;
+        flex-flow: column;
+        min-height: 100vh;
+        #content{
+            flex: 1 1 auto;
+        }
     }
 
 
@@ -147,17 +147,17 @@
     }
 
     :global(h1){
-      font-weight: bolder;
-      font-size: var(--text-size-large);
+        font-weight: bolder;
+        font-size: var(--text-size-large);
     }
 
     #selector{
-      z-index: 1;
+        z-index: 1;
         width: 20px;
         height: 5px;
         background: var(--accent);
         border-radius: 10px;
-      transition: all 0.3s ease;
+        transition: all 0.3s ease;
         opacity: 0;
         position: absolute;
         bottom: 20px;
@@ -165,22 +165,19 @@
     }
     .nav-buttons {
 
-      position: relative;
+        position: relative;
         a{
-          z-index: 2;
-              padding: 25px;
-             // margin: -30px;
+            z-index: 2;
+            padding: 25px;
             transition: 0.6s ease;
             text-transform: uppercase;
             text-decoration: none;
-           margin: 5px;
+            margin: 5px;
             &:active ~ #selector{
                 transform: scale(0.5);
             }
         }
     }
-
-
 </style>
 
 <script lang="ts">

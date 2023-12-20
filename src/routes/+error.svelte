@@ -4,7 +4,7 @@
 
 <style lang="scss">
     span{
-      font-size: calc(var(--text-size-large) + 1rem);
+        font-size: calc(var(--text-size-large) + 1rem);
     }
     a{
         font-size: var(--text-size);

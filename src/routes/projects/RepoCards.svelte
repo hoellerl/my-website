@@ -28,72 +28,70 @@
 
 <style lang="scss">
 
-  .card-container {
-    display: flex;
-    flex-wrap: wrap;
-    gap: 20px;
-    justify-content: space-around;
-  }
-
-
-  .card {
-    display: flex;
-    flex-direction: column;
-    justify-content: space-between;
-    border-radius: var(--rounding);
-    text-decoration: none;
-    padding: 0 10px;
-    background-color: var(--sec-bg);
-    width: 19vw;
-    min-width: 10vw;
-    transition:  transform 0.3s ease, box-shadow 0.3s ease, color 0.3s ease;
-    margin: 0 15px;
-
-    h2 {
-      font-size: 1.4rem;
-      padding-bottom: 5px;
-      margin-bottom: 5px;
-      color: var(--text);
+    .card-container {
+        display: flex;
+        flex-wrap: wrap;
+        gap: 20px;
+        justify-content: space-around;
     }
 
-    .divider{
-        width: calc(100% + 20px);
-        height: 2px;
-background: linear-gradient(to right, var(--sec-bg) 10%, var(--accent) 50%, var(--sec-bg) 90%);
-      margin: 7px -10px;
+
+    .card {
+        display: flex;
+        flex-direction: column;
+        justify-content: space-between;
+        border-radius: var(--rounding);
+        text-decoration: none;
+        padding: 0 10px;
+        background-color: var(--sec-bg);
+        width: 19vw;
+        min-width: 10vw;
+        transition:  transform 0.3s ease, box-shadow 0.3s ease, color 0.3s ease;
+        margin: 0 15px;
+
+        h2 {
+            font-size: 1.4rem;
+            padding-bottom: 5px;
+            margin-bottom: 5px;
+            color: var(--text);
+        }
+
+        .divider{
+            width: calc(100% + 20px);
+            height: 2px;
+            background: linear-gradient(to right, var(--sec-bg) 10%, var(--accent) 50%, var(--sec-bg) 90%);
+            margin: 7px -10px;
+        }
+
+        &:hover{
+            transform: scale(1.05);
+            box-shadow:  0 0 10px rgba(0, 0, 0, 0.5);
+        }
+
+        &:active{
+            transform: scale(0.95);
+            box-shadow:  0 0 0 rgba(0, 0, 0, 0.5);
+        }
+
+        p span{
+            margin-left: 5px;
+            font-size: 1.1rem;
+        }
+
+        .desc{
+            color: var(--sec-text);
+        }
+
+        .bottom-row {
+            display: flex;
+            justify-content: space-between;
+            color: var(--text);
+        }
+      }
+
+    .bottom-row p * {
+        vertical-align: middle;
     }
-
-    &:hover{
-      transform: scale(1.05);
-      box-shadow:  0 0 10px rgba(0, 0, 0, 0.5);
-    }
-
-    &:active{
-      transform: scale(0.95);
-      box-shadow:  0 0 0 rgba(0, 0, 0, 0.5);
-    }
-
-    p span{
-      margin-left: 5px;
-      font-size: 1.1rem;
-
-    }
-
-    .desc{
-      color: var(--sec-text);
-    }
-
-    .bottom-row {
-      display: flex;
-      justify-content: space-between;
-      color: var(--text);
-    }
-  }
-
-  .bottom-row p * {
-    vertical-align: middle;
-
-  }
 </style>
 
 <div class="card-container">

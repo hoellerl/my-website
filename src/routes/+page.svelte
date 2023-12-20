@@ -8,19 +8,19 @@
 
 
 <style>
-  .centered-content {
-    display: flex;
-    flex-direction: column;
-    justify-content: center;
-    min-height: calc(100vh - 300px);
-    text-align: left;
-  }
+    .centered-content {
+        display: flex;
+        flex-direction: column;
+        justify-content: center;
+        min-height: calc(100vh - 300px);
+        text-align: left;
+    }
 
-  img {
-      display: inline-block;
-      height: 200px;
-      margin: -30px auto -30px 80px;
-  }
+    img {
+        display: inline-block;
+        height: 200px;
+        margin: -30px auto -30px 80px;
+    }
 
     h1 {
         font-size: var(--text-size-huge);
