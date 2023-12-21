@@ -1,5 +1,22 @@
 <style lang="scss">
 
+    @media only screen and (max-width: 1024px) {
+        // make the two-inputs divs stack on top of each other
+        div.two-inputs{
+            flex-direction: column !important;
+            div{
+              margin: 0 auto !important;
+                width: 100%;
+               // center the labels
+                label{
+                  margin: 0;
+                }
+            }
+
+        }
+
+    }
+
     input, textarea {
         width: 100%;
         padding: 10px;
@@ -91,7 +108,27 @@
         script.async = true;
         script.defer = true;
         document.body.appendChild(script);
+        // if on mobile rearrange the two labels
+        rearrangeLabelsOnMobile();
+        window.addEventListener('resize', () => {setTimeout(rearrangeLabelsOnMobile, 300);});
     });
+    function rearrangeLabelsOnMobile(){
+        const noOfChilds = document.querySelectorAll('div.labels div');
+        const twoInputs = document.getElementsByClassName('two-inputs');
+        if(noOfChilds.length >= 2 && window.innerWidth < 1024){
+            const secondLabel = twoInputs[0].children[1];
+            if (secondLabel) {
+                twoInputs[0].removeChild(secondLabel);
+                twoInputs[1].insertBefore(secondLabel, twoInputs[1].children[1]);
+            }
+        }
+        else if (noOfChilds.length < 2 && window.innerWidth >= 1024){
+            const secondLabel = twoInputs[1].children[1];
+            if (secondLabel) {
+                twoInputs[1].removeChild(secondLabel);
+                twoInputs[0].appendChild(secondLabel);
+            }}
+    }
 </script>
 
 <svelte:head>
@@ -101,7 +138,7 @@
 <h1>{@html $_("contact-header")}</h1>
 <form id="contact" action="https://api.web3forms.com/submit" method="POST">
     <input type="hidden" name="access_key" value="7b60772a-7925-491c-b272-616e60a62db5">
-        <div class="two-inputs">
+        <div class="two-inputs labels">
             <div>
             <label for="email">{$_("contact-email")}</label>
             </div>

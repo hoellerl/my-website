@@ -31,6 +31,12 @@
         color: var(--sec-text);
 
     }
+
+    @media only screen and (max-width: 1024px) {
+        img {
+            display: none;
+        }
+    }
 </style>
 
 <div class="centered-content">

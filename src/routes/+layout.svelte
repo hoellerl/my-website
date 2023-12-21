@@ -46,7 +46,9 @@
     }
 
 
-
+    .checkbox{
+        display: none;
+    }
 
 
     nav {
@@ -69,7 +71,7 @@
             font-size: var(--text-size);
         }
 
-        button, .logo {
+        button, .logo a {
             display: flex;
             align-items: center;
             justify-content: center;
@@ -83,7 +85,7 @@
             margin-left: var(--side-spacing);
             font-size: var(--text-size);
         }
-        .logo{
+        .logo a{
             margin-right: var(--side-spacing);
             img{
                 height: 70px;
@@ -119,10 +121,118 @@
         clip: rect(0, 0, 0, 0);
         border: 0;
     }
-    @media only screen and (min-width: 1024px) {
-        // padding for desktop
-        #content{
-            padding: 0 15vw;
+
+    .burger-button{
+      display: none;
+    }
+
+    @media only screen and (max-width: 1024px ) {
+        #selector{
+            display: none !important;
+        }
+        :global(body #content){
+            padding: 0 2vw !important;
+        }
+
+        :global(h1){
+            font-size: var(--text-size-medium) !important;
+        }
+
+        .logo{
+            padding: 0;
+            display: flex;
+            flex-flow: row;
+            align-items: center;
+            justify-content: space-between;
+            width: 100%;
+            h1{
+                display: none;
+            }
+
+            a{
+                margin: 0;
+            }
+
+            div{
+                position: relative;
+
+                .checkbox{
+                  position: absolute;
+                  display: block;
+                  height: 40px;
+                  width: 40px;
+                    top: 50%;
+                    left: 50%;
+                    transform: translate(-50%, -50%);
+                  z-index: 5;
+                  opacity: 0;
+                  cursor: pointer;
+                }
+
+              .checkbox:checked ~ .hamburger-lines .line1 {
+                transform: rotate(45deg);
+              }
+
+              .checkbox:checked ~ .hamburger-lines .line2 {
+                transform: scaleY(0);
+              }
+
+              .checkbox:checked ~ .hamburger-lines .line3 {
+                transform: rotate(-45deg);
+              }
+              .hamburger-lines {
+                height: 26px;
+                width: 32px;
+                z-index: 2;
+                display: flex;
+                flex-direction: column;
+                justify-content: space-between;
+                cursor: pointer;
+                .line{
+                  display: block;
+                  height: 4px;
+                  width: 100%;
+                  border-radius: 10px;
+                  background: var(--accent);
+                }
+
+                .line1 {
+                  transform-origin: 0 0;
+                  transition: transform 0.4s ease-in-out;
+                }
+
+                .line2 {
+                  transition: transform 0.2s ease-in-out;
+                }
+
+                .line3 {
+                  transform-origin: 0 100%;
+                  transition: transform 0.4s ease-in-out;
+                }
+              }
+            }
+
+
+
+        }
+        nav{
+            margin-top: 3px;
+            flex-flow: column;
+            align-items: center;
+
+
+            .nav-buttons{
+                margin-top: 20px;
+                display: flex;
+                flex-flow: column;
+                align-items: center;
+                a, button{
+                    margin: 5px 0;
+                }
+            }
+            button{
+                margin: 10px 0;
+            }
         }
     }
 
@@ -132,7 +242,9 @@
         flex-flow: column;
         min-height: 100vh;
         #content{
+            padding: 0 15vw;
             flex: 1 1 auto;
+            align-content: center;
         }
     }
 
@@ -206,6 +318,9 @@
     changeFlagBasedOnLocation();
 
     onMount(() => {
+        const check = document.querySelector('.checkbox') as HTMLInputElement;
+
+        burgerMenuListener(check);
         changeFaviconBasedOnTheme();
         // 100 ms timeout since chrome messes up the hover effect without it
         setTimeout(() => {
@@ -213,7 +328,10 @@
         }, 100);
         // when the window is resized, recalculate the positions of the selector
         window.addEventListener('resize', () => {
-            buttonHoverSetup();
+            handleCheck(check);
+            setTimeout(() => {
+                buttonHoverSetup();
+            }, 300);
         });
 
 
@@ -322,7 +440,7 @@
             for (const favicon of favicons) {
                 const fav = (favicon as HTMLLinkElement);
                 if (fav) {
-                    if (window.matchMedia && window.matchMedia('(prefers-color-scheme: dark)').matches) {
+                    if (window.matchMedia && window.matchMedia('(prefers-color-scheme: dark)').matches && !fav.href.includes("-transparent")) {
                             fav.href = fav.href.replace(/\.(?=[^.]*$)/, "-transparent.");
                     } else {
                         fav.href = fav.href.replace('-transparent', '');
@@ -333,29 +451,65 @@
         }
 
     }
+    function burgerMenuListener(check: HTMLInputElement){
+        handleCheck(check);
+        if (check){
+            check.removeEventListener("change", () => {});
+            check.addEventListener('change', () => {
+                handleCheck(check);
+            });
+            }
+
+    }
+    function handleCheck(check: HTMLInputElement ){
+        if (!check.checked && window.innerWidth < 1024) {
+            document.querySelectorAll(".nav-buttons *").forEach((el) => {
+                (el as HTMLElement).style.display = "none";
+            });
+        } else {
+            document.querySelectorAll(".nav-buttons *").forEach((el) => {
+                (el as HTMLElement).style.display = "block";
+                if (check.checked){
+                    el.addEventListener('click', () => {
+                        check.checked = false;
+                        handleCheck(check);
+                    });
+                }
+
+            });
+        }
+    }
 </script>
 
 
 
 <nav>
-    <div>
-    <a class="logo" href="/"><img src="/logo.svg" alt="logo"></a>
+    <div class="logo">
+    <a  href="/"><img src="/logo.svg" alt="logo"></a>
         <h1>Adam Höllerl</h1>
+        <div>
+            <input class="checkbox" type="checkbox"/>
+            <div class="hamburger-lines">
+                <span class="line line1"></span>
+                <span class="line line2"></span>
+                <span class="line line3"></span>
+            </div>
+        </div>
     </div>
     <div>
     <div class="nav-buttons">
 
         <a href="/">{$_("home")}</a>
         <a href="/about">{$_("about")}</a>
-        <a href="/contact">{$_("contact")}</a>
         <a href="/projects">{$_("projects")}</a>
+        <a href="/contact">{$_("contact")}</a>
         <div id="selector"></div>
+        <button type="button" on:click={changeLocale}>
+            {#if $locale?.startsWith('en')}<i class="twa twa-flag-{deCountries[germanLocation]??'germany'}"><span>Deutsch</span></i>
+            {:else}<i class="twa twa-flag-{enCountries[englishLocation]??'united-kingdom'}" ><span>English</span></i>{/if}
+        </button>
 
     </div>
-    <button type="button" on:click={changeLocale}>
-        {#if $locale?.startsWith('en')}<i class="twa twa-flag-{deCountries[germanLocation]??'germany'}"><span>Deutsch</span></i>
-        {:else}<i class="twa twa-flag-{enCountries[englishLocation]??'united-kingdom'}" ><span>English</span></i>{/if}
-    </button>
     </div>
 </nav>
 <div id="content">
