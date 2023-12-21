@@ -5,11 +5,11 @@
         div.two-inputs{
             flex-direction: column !important;
             div{
-              margin: 0 auto !important;
+                margin: 0 auto !important;
                 width: 100%;
-               // center the labels
+
                 label{
-                  margin: 0;
+                    margin: 0;
                 }
             }
 
