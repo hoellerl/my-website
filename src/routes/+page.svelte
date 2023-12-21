@@ -36,6 +36,11 @@
         img {
             display: none;
         }
+
+        p{
+            font-size: var(--text-size-small);
+
+        }
     }
 </style>
 
