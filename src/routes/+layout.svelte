@@ -205,6 +205,7 @@
     changeFlagBasedOnLocation();
 
     onMount(() => {
+        changeFaviconBasedOnTheme();
         // 100 ms timeout since chrome messes up the hover effect without it
         setTimeout(() => {
             buttonHoverSetup();
@@ -311,10 +312,27 @@
             selector.style.left = `${distance}px`;
         }
     }
+    function changeFaviconBasedOnTheme() {
+        const mediaQuery = window.matchMedia('(prefers-color-scheme: dark)');
+        themeChange();
+        mediaQuery.addEventListener('change', themeChange);
+        function themeChange(){
+            const favicon = document.querySelector('link[rel="icon"]') as HTMLLinkElement;
+            if (favicon) {
+                if (window.matchMedia && window.matchMedia('(prefers-color-scheme: dark)').matches) {
+                    favicon.href = '/favicon.svg';
+                } else {
+                    favicon.href = '/favicon-dark.svg';
+                }
+            }
+        }
+
+    }
 </script>
+
 <nav>
     <div>
-    <a class="logo" href="/"><img src="/favicon-transparent.svg" alt="logo"></a>
+    <a class="logo" href="/"><img src="/favicon.svg" alt="logo"></a>
         <h1>Adam Höllerl</h1>
     </div>
     <div>

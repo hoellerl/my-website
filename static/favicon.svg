@@ -1,1 +1,23 @@
-<?xml version="1.0" encoding="UTF-8"?><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 418.04 418.04"><defs><style>.cls-1{stroke-width:46px;}.cls-1,.cls-2,.cls-3{stroke-miterlimit:10;}.cls-1,.cls-3{fill:none;stroke:#f6ff00;}.cls-2{stroke:#fff;}.cls-3{stroke-width:21px;}</style></defs><g id="Ebene_2"><rect class="cls-2" x=".5" y=".5" width="417.04" height="417.04" rx="208.52" ry="208.52"/></g><g id="Ebene_1"><polyline class="cls-1" points="217.75 273.73 216.73 113.28 116.12 227.3 265.23 204.57"/><line class="cls-1" x1="272.82" y1="327.67" x2="268.41" y2="101.57"/><circle class="cls-3" cx="209.03" cy="209.02" r="189.97"/></g></svg>
+<?xml version="1.0" encoding="UTF-8"?>
+<svg id="Ebene_1" data-name="Ebene 1" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 430.39 430.39">
+  <defs>
+    <style>
+      .cls-1 {
+        stroke-width: 21px;
+      }
+
+      .cls-1, .cls-2 {
+        fill: none;
+        stroke: #f6ff00;
+        stroke-miterlimit: 10;
+      }
+
+      .cls-2 {
+        stroke-width: 46px;
+      }
+    </style>
+  </defs>
+  <polyline class="cls-2" points="224.6 284.93 223.5 112.03 115.09 234.89 275.76 210.4"/>
+  <line class="cls-2" x1="283.94" y1="343.05" x2="279.19" y2="99.41"/>
+  <circle class="cls-1" cx="215.2" cy="215.2" r="204.7"/>
+</svg>
