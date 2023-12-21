@@ -3,7 +3,7 @@
 </script>
 
 <svelte:head>
-    <title>Adam Höllerl</title>
+    <title>Adam Höllerl - {$_("home")}</title>
 </svelte:head>
 
 

@@ -9,7 +9,7 @@
 </style>
 
 <svelte:head>
-    <title>{$_("contact")} | Adam Höllerl</title>
+    <title>Adam Höllerl - {$_("contact")}</title>
 </svelte:head>
 
 <h1>{@html $_("contact-thanks") }</h1>

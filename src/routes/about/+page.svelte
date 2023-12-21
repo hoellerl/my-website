@@ -43,7 +43,7 @@
 
 
 <svelte:head>
-    <title>{$_("about")} | Adam Höllerl</title>
+    <title>Adam Höllerl - {$_("about")}</title>
 </svelte:head>
 
 <h1>{@html $_("about-header")}</h1>
