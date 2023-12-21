@@ -136,7 +136,6 @@
         }
     }
 
-
     :global(*::selection){
         background: var(--accent);
         color: black;
@@ -163,6 +162,7 @@
         bottom: 20px;
         left: 0;
     }
+
     .nav-buttons {
 
         position: relative;
@@ -335,32 +335,7 @@
     }
 </script>
 
-<svelte:head>
-    <meta name="og:title" content="Adam Höllerl">
-    <meta name="og:description" content="Adam Höllerl's personal website">
-    <meta name="og:image" content="https://hoellerl.dev/og-image.png">
-    <meta name="og:url" content="https://hoellerl.dev">
-    <meta name="og:site_name" content="Adam Höllerl">
-    <meta name="og:type" content="website">
-    <meta name="og:locale" content="de-AT">
-    <meta name="og:locale:alternate" content="de_DE">
-    <meta name="og:locale:alternate" content="de_CH">
-    <meta name="og:locale:alternate" content="de_LI">
-    <meta name="og:locale:alternate" content="en_AU">
-    <meta name="og:locale:alternate" content="en_CA">
-    <meta name="og:locale:alternate" content="en-US">
-    <meta name="og:locale:alternate" content="en_GB">
 
-    <meta name="twitter:card" content="summary_large_image">
-    <meta name="twitter:site" content="@hoellerl">
-    <meta name="twitter:creator" content="@hoellerl">
-    <meta name="twitter:title" content="Adam Höllerl">
-    <meta name="twitter:description" content="Adam Höllerl's personal website">
-    <meta name="twitter:image" content="https://hoellerl.com/og-image.png">
-    <meta name="twitter:image:alt" content="Adam Höllerl's personal website">
-    <meta name="twitter:url" content="https://hoellerl.com">
-
-</svelte:head>
 
 <nav>
     <div>
