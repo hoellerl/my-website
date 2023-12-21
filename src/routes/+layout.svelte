@@ -320,9 +320,9 @@
             const favicon = document.querySelector('link[rel="icon"]') as HTMLLinkElement;
             if (favicon) {
                 if (window.matchMedia && window.matchMedia('(prefers-color-scheme: dark)').matches) {
-                    favicon.href = '/favicon.svg';
+                    favicon.href = favicon.href.replace(".", "-transparent.");
                 } else {
-                    favicon.href = '/favicon-dark.svg';
+                    favicon.href = favicon.href.replace('-transparent', '');
                 }
             }
         }
@@ -332,7 +332,7 @@
 
 <nav>
     <div>
-    <a class="logo" href="/"><img src="/favicon.svg" alt="logo"></a>
+    <a class="logo" href="/"><img src="/logo.svg" alt="logo"></a>
         <h1>Adam Höllerl</h1>
     </div>
     <div>
