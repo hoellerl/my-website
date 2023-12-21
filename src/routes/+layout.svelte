@@ -189,6 +189,8 @@
     import {page} from "$app/stores";
     import lang from "$lib/stores/langStore";
     import {get} from "svelte/store";
+    import {types} from "sass";
+    import List = types.List;
     const localLang = get(lang);
     if (localLang !== "") {
         locale.set(localLang);
@@ -317,14 +319,18 @@
         themeChange();
         mediaQuery.addEventListener('change', themeChange);
         function themeChange(){
-            const favicon = document.querySelector('link[rel="icon"]') as HTMLLinkElement;
-            if (favicon) {
-                if (window.matchMedia && window.matchMedia('(prefers-color-scheme: dark)').matches) {
-                    favicon.href = favicon.href.replace(".", "-transparent.");
-                } else {
-                    favicon.href = favicon.href.replace('-transparent', '');
+            const favicons = document.querySelectorAll('link[rel="icon"]');
+            for (const favicon of favicons) {
+                const fav = (favicon as HTMLLinkElement);
+                if (fav) {
+                    if (window.matchMedia && window.matchMedia('(prefers-color-scheme: dark)').matches) {
+                            fav.href = fav.href.replace(/\.(?=[^.]*$)/, "-transparent.");
+                    } else {
+                        fav.href = fav.href.replace('-transparent', '');
+                    }
                 }
             }
+
         }
 
     }
