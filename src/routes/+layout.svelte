@@ -314,7 +314,7 @@
 </script>
 <nav>
     <div>
-    <a class="logo" href="/"><img src="/favicon.svg" alt="logo"></a>
+    <a class="logo" href="/"><img src="/favicon-transparent.svg" alt="logo"></a>
         <h1>Adam Höllerl</h1>
     </div>
     <div>
