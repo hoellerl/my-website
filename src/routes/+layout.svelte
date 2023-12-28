@@ -328,9 +328,7 @@
         // when the window is resized, recalculate the positions of the selector
         window.addEventListener('resize', () => {
             handleCheck(check);
-            setTimeout(() => {
-                buttonHoverSetup();
-            }, 300);
+            buttonHoverSetup();
         });
 
 
@@ -373,7 +371,7 @@
         // short delay to account for the time it takes to change the locale
         setTimeout(() => {
             buttonHoverSetup();
-        }, 100);
+        }, 0);
     }
     function buttonHoverSetup(){
         if (!isMounted){
