@@ -309,12 +309,14 @@
     const enCountries = ["united-kingdom", "australia", "united-states", "canada"];
     let englishLocation: number = 0;
     let germanLocation : number = 0;
+    let isMounted = false;
 
     inject({ mode: dev ? 'development' : 'production' });
     injectSpeedInsights();
     changeFlagBasedOnLocation();
 
     onMount(() => {
+        isMounted = true;
         const check = document.querySelector('.checkbox') as HTMLInputElement;
 
         burgerMenuListener(check);
@@ -374,6 +376,9 @@
         }, 100);
     }
     function buttonHoverSetup(){
+        if (!isMounted){
+            return;
+        }
         // get button which leads to current route
         let activeButton =  document.querySelector(`.nav-buttons a[href="${window.location.pathname}"]`);
         let isHovering = false;
