@@ -371,7 +371,7 @@
         // short delay to account for the time it takes to change the locale
         setTimeout(() => {
             buttonHoverSetup();
-        }, 0);
+        }, 100);
     }
     function buttonHoverSetup(){
         if (!isMounted){
