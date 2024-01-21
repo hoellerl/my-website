@@ -25,9 +25,10 @@
     h1 {
         font-size: var(--text-size-huge);
         margin-bottom: 0;
+
     }
     p{
-        font-size: var(--text-size-medium);
+        font-size: var(--text-size);
         color: var(--sec-text);
 
     }

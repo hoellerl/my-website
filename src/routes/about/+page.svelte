@@ -69,4 +69,5 @@
             <img class="lang" alt="Svelte" src="https://cdn.jsdelivr.net/gh/devicons/devicon/icons/svelte/svelte-original.svg" />
         </div>
     </div>
+    <!--<figure><embed src="https://wakatime.com/share/@hoellerl/bc978c61-d501-4cbc-bf7a-e77cde8eacd1.svg"></figure>-->
 </div>

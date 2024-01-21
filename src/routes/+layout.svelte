@@ -26,7 +26,7 @@
     :global(:root){
         --text: white;
         --sec-text: #c3c7cb;
-        --text-size-huge: 6rem;
+        --text-size-huge: 5rem;
         --text-size-large: 3.5rem;
         --text-size-medium: 2.5rem;
         --text-size: 2rem;
