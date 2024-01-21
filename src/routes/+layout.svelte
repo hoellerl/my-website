@@ -1,5 +1,5 @@
 <style lang="scss">
-    @import url(https://cdn.jsdelivr.net/gh/SebastianAigner/twemoji-amazing/twemoji-amazing.css); // from https://cdn.jsdelivr.net/gh/SebastianAigner/twemoji-amazing/twemoji-amazing.css
+    @import url(https://cdn.jsdelivr.net/gh/SebastianAigner/twemoji-amazing/twemoji-amazing.css);
     @font-face {
         font-family: 'Carlito';
         src: url('$lib/fonts/Carlito-Regular.ttf') format('truetype');
@@ -241,7 +241,6 @@
         #content{
             padding: 0 15vw;
             flex: 1 1 auto;
-            align-content: center;
         }
     }
 

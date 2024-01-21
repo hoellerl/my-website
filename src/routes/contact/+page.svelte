@@ -1,5 +1,9 @@
 <style lang="scss">
 
+  .all-inputs{
+    text-align: left !important;
+  }
+
     @media only screen and (max-width: 1024px) {
         // make the two-inputs divs stack on top of each other
         div.two-inputs{
@@ -54,7 +58,7 @@
             width: 50%;
             display: flex;
             flex-direction: row;
-            justify-content: center;
+            justify-content: left;
         }
     }
 
@@ -137,6 +141,7 @@
 
 <h1>{@html $_("contact-header")}</h1>
 <form id="contact" action="https://api.web3forms.com/submit" method="POST">
+    <div class="all-inputs">
     <input type="hidden" name="access_key" value="7b60772a-7925-491c-b272-616e60a62db5">
         <div class="two-inputs labels">
             <div>
@@ -155,6 +160,7 @@
     <label for="message">{$_("contact-message")}</label><br>
     <textarea name="message" placeholder="{$_('contact-message-placeholder')}" required rows="5" cols="40"></textarea><br>
     <input type="checkbox" name="botcheck" class="hidden" style="display: none;">
+    </div>
     <div class="h-captcha" data-captcha="true" data-theme="dark"></div>
     <input type="hidden" name="redirect" value="{win?.location?.origin??'hoellerl.svelte.app'}/contact/submitted" style="display: none;">
     <button class="button" type="submit"><i class="twa twa-rocket"></i>&nbsp&nbsp{$_("send")}</button>
