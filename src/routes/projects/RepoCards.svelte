@@ -124,7 +124,7 @@
         fetchRepos();
         setTimeout(() => {
             setSepWidth();
-        }, 200);
+        }, 500);
         window.addEventListener('resize', setSepWidth);
     });
 

@@ -4,11 +4,12 @@
     text-align: left !important;
   }
 
+  label{
+    margin-left: 10px;
+  }
+
     @media only screen and (max-width: 1024px) {
         // make the two-inputs divs stack on top of each other
-      label{
-        margin-left: 20px;
-      }
         div.two-inputs{
             flex-direction: column !important;
             div{

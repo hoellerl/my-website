@@ -43,6 +43,14 @@
 
     }
 
+    @media only screen and (max-width: 1024px) {
+      // make the two-inputs divs stack on top of each other
+      p{
+        text-align: left;
+      }
+
+    }
+
 </style>
 
 
