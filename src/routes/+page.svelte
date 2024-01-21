@@ -18,8 +18,8 @@
 
     img {
         display: inline-block;
-        height: 200px;
-        margin: -30px auto -30px 80px;
+        width: 9vw;
+        margin: -30px auto -30px 50px;
     }
 
     h1 {
@@ -40,6 +40,17 @@
 
         p{
             font-size: var(--text-size-small);
+
+        }
+    }
+
+    @media only screen and (max-width: 1229px) {
+        h1 {
+            font-size: var(--text-size-large);
+        }
+
+        p{
+            font-size: calc(var(--text-size) - 0.3rem);
 
         }
     }
