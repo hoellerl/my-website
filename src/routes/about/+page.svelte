@@ -38,11 +38,9 @@
 
     p{
         font-size: var(--text-size-small);
-      text-align: left;
-    }
+      text-align: justify;
+      line-height: 30px;
 
-    .summary {
-        line-height: 30px;
     }
 
 </style>
@@ -53,9 +51,7 @@
 </svelte:head>
 
 <h1>{@html $_("about-header")}</h1>
-<div class="summary">
 <p>{$_("about-summary")}</p>
-</div>
 <h2>{$_("about-tech-stack")}</h2>
 <div id="tech-stack">
     <div >
