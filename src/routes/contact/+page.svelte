@@ -6,15 +6,14 @@
 
     @media only screen and (max-width: 1024px) {
         // make the two-inputs divs stack on top of each other
+      label{
+        margin-left: 20px;
+      }
         div.two-inputs{
             flex-direction: column !important;
             div{
-                margin: 0 auto !important;
                 width: 100%;
-
-                label{
-                    margin: 0;
-                }
+                margin: unset !important;
             }
 
         }
