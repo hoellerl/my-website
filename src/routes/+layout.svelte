@@ -323,7 +323,7 @@
         // 100 ms timeout since chrome messes up the hover effect without it
         setTimeout(() => {
             buttonHoverSetup();
-        }, 100);
+        }, 200);
         // when the window is resized, recalculate the positions of the selector
         window.addEventListener('resize', () => {
             handleCheck(check);
