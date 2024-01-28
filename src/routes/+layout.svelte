@@ -226,7 +226,8 @@
                 align-items: center;
                 a, button{
                     margin: 5px 0;
-                  padding: 5px 0;
+                  padding-top: 7px;
+                  padding-bottom: 7px;
                 }
             }
             button{
