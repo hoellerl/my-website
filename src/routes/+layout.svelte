@@ -94,6 +94,7 @@
     }
 
     footer {
+      margin-top: 30px;
         flex: 0 1 30px;
         font-size: var(--text-size-tiny);
 
@@ -225,6 +226,7 @@
                 align-items: center;
                 a, button{
                     margin: 5px 0;
+                  padding: 5px 0;
                 }
             }
             button{
