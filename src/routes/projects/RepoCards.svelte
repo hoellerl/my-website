@@ -19,6 +19,12 @@
         width: 300px;
         transition:  transform 0.3s ease, box-shadow 0.3s ease, color 0.3s ease;
 
+        min-width: 300px;
+        max-width: 300px;
+        min-height: 200px;
+        max-height: 200px;
+
+
         h2 {
             font-size: 1.4rem;
             margin-bottom: 5px;
@@ -54,7 +60,7 @@
         }
 
         &:hover{
-            transform: scale(1.05);
+            transform: scale(1.1);
             box-shadow:  0 0 10px rgba(0, 0, 0, 0.5);
         }
 
