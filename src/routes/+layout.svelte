@@ -261,6 +261,11 @@
         font-size: var(--text-size-large);
     }
 
+    :global(p){
+      font-size: var(--text-size-small);
+
+    }
+
     #selector{
         z-index: 1;
         width: 20px;
@@ -380,7 +385,7 @@
             return;
         }
         // get button which leads to current route
-        let activeButton =  document.querySelector(`.nav-buttons a[href="${window.location.pathname}"]`);
+        let activeButton =  document.querySelector(`.nav-buttons a[href="/${window.location.pathname.split('/')[1]}"]`);
         let isHovering = false;
         const navButtons = document.querySelectorAll('.nav-buttons a');
         const parentDiv = document.querySelector('.nav-buttons');
@@ -393,7 +398,8 @@
         const selectorWidth = selector.offsetWidth;
         // when page changes, move selector to new button
         page.subscribe(() => {
-            activeButton =  document.querySelector(`.nav-buttons a[href="${window.location.pathname}"]`);
+            console.log(window.location.pathname.split('/')[1]);
+            activeButton = document.querySelector(`.nav-buttons a[href="/${window.location.pathname.split('/')[1]}"]`);
             if (activeButton){
                 moveButton(activeButton);
             }
