@@ -57,6 +57,6 @@
 </style>
 
 <div class="centered-content">
-  <h1>{$_("greeting")}<span>Adam</span><img src="/hand.webp" alt="waving-hand"/></h1>
+  <h1>{$_("greeting")}<span>Adam</span><img src="/hand.webp" alt="waving-hand"></h1>
   <p>{@html $_("summary")}</p>
 </div>
