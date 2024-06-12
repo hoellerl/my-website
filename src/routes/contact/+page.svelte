@@ -102,7 +102,7 @@
 
 <script lang="ts">
     import { _ } from "svelte-i18n";
-    import {onMount} from "svelte";
+    import {afterUpdate, onMount} from "svelte";
     import { browser } from '$app/environment';
     let win = browser ? window : null;
 
@@ -110,31 +110,33 @@
         // if on mobile rearrange the two labels
         rearrangeLabelsOnMobile();
         window.addEventListener('resize', () => {setTimeout(rearrangeLabelsOnMobile, 300);});
-        // uncomment to enable hCaptcha
-        // const form = document.getElementById('contact');
-        // if (!form) {
-        //     return;
-        // }
-        // form.addEventListener('submit', (e) => {
-        //     const hCaptchaElement = form.querySelector('textarea[name=h-captcha-response]') as HTMLTextAreaElement;
-        //     const hCaptcha = hCaptchaElement ? hCaptchaElement.value : null;
-        //     if (!hCaptcha) {
-        //         e.preventDefault();
-        //         alert('Please complete the captcha');
-        //     }
-        // });
+        // region comment to disable hCaptcha
+        const form = document.getElementById('contact');
+        if (!form) {
+            return;
+        }
+        form.addEventListener('submit', (e) => {
+            const hCaptchaElement = form.querySelector('textarea[name=h-captcha-response]') as HTMLTextAreaElement;
+            const hCaptcha = hCaptchaElement ? hCaptchaElement.value : null;
+            if (!hCaptcha) {
+                e.preventDefault();
+                alert('Please complete the captcha');
+            }
+        });
+        // endregion
     });
-    // uncomment to enable hCaptcha
-    // afterUpdate(() => {
-    //     if (!browser) {
-    //         return;
-    //     }
-    //     const script = document.createElement('script');
-    //     script.src = 'https://web3forms.com/client/script.js';
-    //     script.async = true;
-    //     script.defer = true;
-    //     document.body.appendChild(script);
-    // });
+    // region comment to disable hCaptcha
+    afterUpdate(() => {
+        if (!browser) {
+            return;
+        }
+        const script = document.createElement('script');
+        script.src = 'https://web3forms.com/client/script.js';
+        script.async = true;
+        script.defer = true;
+        document.body.appendChild(script);
+    });
+    // endregion
 
     function rearrangeLabelsOnMobile(){
         const noOfChilds = document.querySelectorAll('div.labels div');
@@ -181,8 +183,9 @@
     <textarea name="message" placeholder="{$_('contact-message-placeholder')}" required rows="5" cols="40"></textarea><br>
     <input type="checkbox" name="botcheck" class="hidden" style="display: none;">
     </div>
-    <!-- uncomment to enable hCaptcha -->
-    <!--    <div class="h-captcha" data-captcha="true" data-theme="dark"></div>-->
+    <!-- region comment to disable hCaptcha -->
+        <div class="h-captcha" data-captcha="true" data-theme="dark"></div>
+    <!-- endregion -->
     <input type="hidden" name="redirect" value="{win?.location?.origin??'hoellerl.dev'}/contact/submitted" style="display: none;">
     <button class="button" type="submit"><i class="twa twa-rocket"></i>&nbsp&nbsp{$_("send")}</button>
 </form>
